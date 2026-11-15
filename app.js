@@ -11,7 +11,7 @@
 // moving a game automatically moves the rest/light days around it.
 // =============================================================
 
-const VERSION = "0.2.1";
+const VERSION = "0.3";
 // Demo mode: open the app with ?demo to see a sample season (stored separately from real data)
 const DEMO = new URLSearchParams(location.search).has("demo") || location.hash === "#demo";
 const STORAGE_KEY = DEMO ? "athlete-planner.demo" : "athlete-planner.v1";
@@ -67,8 +67,8 @@ function defaultState() {
       leagues: [{ source: "MKL", group: "", team: "", name: "", url: "" }],
       practice: { days: [1, 2, 3, 4, 5], start: "16:15", dur: 105 },
       rest: { days: [0], afterGame: true, beforeGame: false, seasonEnd: "" },
-      skills: { enabled: true, days: [6], start: "10:00", dur: 60, focus: "" },
-      sc: { enabled: true, days: [1, 3, 5], when: "after", start: "18:30", dur: 45, fileName: "", wantRecs: false }
+      skills: { enabled: false, days: [6], start: "10:00", dur: 60, focus: "" },
+      sc: { enabled: false, days: [1, 3, 5], when: "after", start: "18:30", dur: 45, fileName: "", wantRecs: false }
     },
     startDate: "", endDate: "",
     games: [],   // { id, date, start, dur, opponent, home, venue, league, status, origDate }
@@ -229,7 +229,10 @@ function tabbar() {
 }
 
 // ---------- 7. SCREENS ----------
-const STEPS = ["about", "games", "practice", "rest", "skills", "sc", "review"];
+// New users answer only 3 short screens. "Change settings" in Profile shows all of them.
+const FULL_STEPS = ["about", "games", "practice", "rest", "skills", "sc", "review"];
+const SHORT_STEPS = ["about", "games", "practice"];
+const steps = () => ui.editing ? FULL_STEPS : SHORT_STEPS;
 
 function screenWelcome() {
   const ex = [["", 0], ["g", 1], ["g", 2], ["g", 3], ["v", 4], ["g", 5], ["", 6]];
@@ -250,28 +253,28 @@ function screenWelcome() {
     <div class="col" style="gap:12px">
       <button class="btn" data-a="start">${t("createPlan")} ${ic("arrow")}</button>
       ${seg("lang", [["lt", "Lietuvių"], ["en", "English"]], state.lang)}
-      <p class="small muted center" style="margin:0">${t("stepsNote", { n: STEPS.length })}</p>
+      <p class="small muted center" style="margin:0">${t("stepsNote", { n: SHORT_STEPS.length })}</p>
     </div></div>`;
 }
 
 function screenOnboarding() {
-  const s = state.setup, name = STEPS[ui.step - 1];
+  const s = state.setup, STEPS = steps(), name = STEPS[ui.step - 1];
   let body = "";
   if (name === "about") {
     const age = ageOn(s.profile.dob);
     body = `<h1 class="h1">${t("aboutTitle")}</h1><p class="p">${t("aboutText")}</p>
-      <div class="grid2">
-        ${field(t("sport"), `<select class="inp" data-f="setup.profile.sport">${Object.entries(t("sports")).map(([k, v]) => `<option value="${k}" ${s.profile.sport === k ? "selected" : ""}>${v}</option>`).join("")}</select>`)}
-        ${field(t("dob"), input("setup.profile.dob", s.profile.dob, "date", `max="${todayKey()}"`))}
-      </div>
+      ${field(t("sport"), `<select class="inp" data-f="setup.profile.sport">${Object.entries(t("sports")).map(([k, v]) => `<option value="${k}" ${s.profile.sport === k ? "selected" : ""}>${v}</option>`).join("")}</select>`)}
+      ${dobPicker(s.profile.dob)}
+      ${age !== null ? `<span class="small muted" style="margin-top:-8px">${t("ageN", { n: age })}</span>` : ""}
+      ${age !== null && age < 18 ? `<label class="check card tight" style="flex-direction:row"><input type="checkbox" data-f="setup.profile.parentOk" ${s.profile.parentOk ? "checked" : ""} style="accent-color:var(--volt)"><span class="small">${t("parentOk")}</span></label>` : ""}
+      ${ui.editing ? `
       <div class="field">${t("gender")}${seg("setup.profile.gender", [["m", t("genders").m], ["f", t("genders").f], ["x", t("genders").x]], s.profile.gender)}</div>
       <div class="grid2">
         ${field(t("years"), input("setup.profile.years", s.profile.years, "number", 'min="0" max="40" inputmode="numeric" data-t="num"'))}
         ${field(t("height"), input("setup.profile.height", s.profile.height, "number", 'min="0" max="250" inputmode="numeric" placeholder="172" data-t="num"'))}
       </div>
       <div class="field">${t("fitness")}${seg("setup.profile.fitness", [1, 2, 3, 4, 5].map(n => [n, n]), s.profile.fitness)}
-        <span class="small" style="color:var(--ink)">${esc(t("fitnessLevels")[s.profile.fitness] || "")}</span></div>
-      ${age !== null && age < 18 ? `<div class="card tight row" style="flex-direction:row">${ic("users", "color:var(--volt);width:18px;height:18px")}<span class="small muted">${t("under18Note")}</span></div>` : ""}`;
+        <span class="small" style="color:var(--ink)">${esc(t("fitnessLevels")[s.profile.fitness] || "")}</span></div>` : ""}`;
   }
   if (name === "games") {
     body = `<h1 class="h1">${t("gamesTitle")}</h1><p class="p">${t("gamesText")}</p>
@@ -294,7 +297,9 @@ function screenOnboarding() {
     body = `<h1 class="h1">${t("practiceTitle")}</h1><p class="p">${t("practiceText")}</p>
       <div class="card"><span class="row bold" style="gap:8px">${ic("users", "color:var(--green);width:20px;height:20px")}${t("days")}</span>
         ${dayChips("setup.practice.days", s.practice.days)}
-        <div class="grid2">${field(t("start"), timeInput("setup.practice.start", s.practice.start))}${field(t("duration"), durSelect("setup.practice.dur", s.practice.dur))}</div></div>`;
+        <div class="grid2">${field(t("start"), timeInput("setup.practice.start", s.practice.start))}${field(t("duration"), durSelect("setup.practice.dur", s.practice.dur))}</div></div>
+      ${!ui.editing ? `<p class="small muted" style="margin:0">${t("laterNote")}</p>
+      <div class="card tight row" style="flex-direction:row">${ic("lock", "color:var(--ink-muted);width:18px;height:18px")}<span class="small muted">${t("privacyShort")}</span></div>` : ""}`;
   }
   if (name === "rest") {
     body = `<h1 class="h1">${t("restTitle")}</h1><p class="p">${t("restText")}</p>
@@ -353,6 +358,18 @@ function screenOnboarding() {
     ${ui.error ? `<p class="err">${esc(ui.error)}</p>` : ""}
     <div class="grow"></div>
     <button class="btn" data-a="${last ? "finish" : "next"}">${last ? (ui.editing ? t("saveChanges") : t("buildSeason")) + " " + ic("arrow") : t("next")}</button></div>`;
+}
+
+// Date of birth: three dropdowns (day · month · year) instead of a calendar to scroll.
+function dobPicker(dob) {
+  const [y, m, d] = (dob || "").split("-").map(Number), part = ui.dob || {};
+  const Y = y || part.y || "", M = m || part.m || "", D = d || part.d || "";
+  const now = new Date().getFullYear(), years = Array.from({ length: 50 }, (_, i) => now - 6 - i);
+  const sel = (key, opts, val, label) => `<select class="inp" data-dob="${key}" aria-label="${label}"><option value="">${label}</option>${opts.map(([v, l]) => `<option value="${v}" ${Number(val) === v ? "selected" : ""}>${l}</option>`).join("")}</select>`;
+  return `<div class="field">${t("dob")}<div style="display:grid;grid-template-columns:1fr 1.6fr 1.2fr;gap:8px">
+    ${sel("d", Array.from({ length: 31 }, (_, i) => [i + 1, i + 1]), D, t("dobDay"))}
+    ${sel("m", t("months").map((n, i) => [i + 1, n]), M, t("dobMonth"))}
+    ${sel("y", years.map(v => [v, v]), Y, t("dobYear"))}</div></div>`;
 }
 
 // ---------- SCHEDULES FROM THE ROBOT ----------
@@ -475,6 +492,11 @@ function viewDay() {
       <button class="btn dark" style="width:auto;padding:0 16px" data-a="openCheckin" data-id="${esc(due.id)}" data-k="${k}">${t("checkin")}</button></div>`;
   }
   const next = dayPlan(addDays(k, 1)).active.find(i => i.type === "game");
+  const d = state.dismissed || {}, s = state.setup;
+  const tip = !s.sc.enabled && !d.sc ? ["sc", t("tipSc")] : !s.skills.enabled && !d.skills ? ["skills", t("tipSkills")] : null;
+  if (tip) banner += `<div class="card tight row" style="flex-direction:row">${ic(tip[0] === "sc" ? "dumbbell" : "target", "color:var(--green);width:20px;height:20px")}
+    <span class="grow small">${tip[1]}</span><button class="btn3 volt" data-a="editStep" data-v="${tip[0]}">${t("addSession")}</button>
+    <button class="icon-btn plain" aria-label="${t("close")}" data-a="dismissTip" data-v="${tip[0]}" style="width:32px;height:32px">${ic("x", "width:16px;height:16px;color:var(--ink-muted)")}</button></div>`;
   return `<div class="row between"><div class="col" style="gap:4px"><span class="label">${fmtShort(k)} · ${t("week", { n: isoWeek(k) })}</span><h1 class="h1" style="font-size:40px">${label}</h1></div>
       <button class="icon-btn volt" aria-label="${t("addSession")}" data-a="openAdd" data-k="${k}" style="color:var(--black-900)">${ic("plus")}</button></div>
     ${viewSwitch()}
@@ -737,12 +759,16 @@ const actions = {
   },
   next() {
     ui.error = "";
-    if (STEPS[ui.step - 1] === "about" && !state.setup.profile.dob) { ui.error = t("needDob"); return; }
+    const STEPS = steps(), p = state.setup.profile, age = ageOn(p.dob);
+    if (STEPS[ui.step - 1] === "about" && !p.dob) { ui.error = t("needDob"); return; }
+    if (STEPS[ui.step - 1] === "about" && age !== null && age < 18 && !p.parentOk) { ui.error = t("needParent"); return; }
     if (STEPS[ui.step - 1] === "rest" && !state.setup.rest.seasonEnd) state.setup.rest.seasonEnd = seasonEnd(todayKey());
     ui.step = Math.min(STEPS.length, ui.step + 1); scrollTo(0, 0);
   },
   back() { ui.error = ""; if (ui.step > 1) ui.step--; else ui.screen = ui.editing ? "main" : "welcome"; scrollTo(0, 0); },
   goStep(el) { ui.step = Number(el.dataset.v); ui.error = ""; scrollTo(0, 0); },
+  editStep(el) { if (["skills", "sc"].includes(el.dataset.v)) state.setup[el.dataset.v].enabled = true; ui.screen = "onb"; ui.editing = true; ui.step = FULL_STEPS.indexOf(el.dataset.v) + 1; scrollTo(0, 0); },
+  dismissTip(el) { state.dismissed = { ...(state.dismissed || {}), [el.dataset.v]: true }; },
   showManual() { ui.showManual = true; },
   teamManual(el) { state.setup.leagues[Number(el.dataset.i)].teamManual = true; },
   async refreshSchedules() { await loadSchedules(); },
@@ -872,12 +898,20 @@ document.addEventListener("input", e => {
 // Selects, checkboxes, dates and files: store and redraw
 document.addEventListener("change", e => {
   const el = e.target;
+  if (el.dataset.dob) {
+    const [y, m, d] = (state.setup.profile.dob || "").split("-").map(Number);
+    ui.dob = { y: ui.dob?.y || y, m: ui.dob?.m || m, d: ui.dob?.d || d, [el.dataset.dob]: Number(el.value) || "" };
+    const { y: Y, m: M, d: D } = ui.dob;
+    if (Y && M && D) { const day = Math.min(D, new Date(Y, M, 0).getDate()); state.setup.profile.dob = `${Y}-${pad(M)}-${pad(day)}`; }
+    else state.setup.profile.dob = "";
+    save(); render(); return;
+  }
   if (el.dataset.a === "file") { const f = el.files?.[0]; state.setup.sc.fileName = f ? f.name : ""; save(); render(); return; }
   if (!el.dataset.f) return;
   let v = el.type === "checkbox" ? el.checked : el.value;
   if (el.type === "checkbox" && el.dataset.t === "invert") v = !v;
   else if (el.dataset.t === "num" && v !== "") v = Number(v);
-  setPath(el.dataset.f, v); save();
+  setPath(el.dataset.f, v); ui.error = ""; save();
   if (el.tagName === "SELECT" || el.type === "checkbox" || el.type === "date" || el.dataset.f === "setup.profile.dob") render();
 });
 // Android: remember the "install app" offer

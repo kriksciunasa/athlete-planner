@@ -11,7 +11,7 @@ const T = {
     welcomeText: "Rungtynės, komandos treniruotės, individualus darbas, fizinis rengimas ir atsigavimas – viename kalendoriuje.",
     exampleWeek: "Savaitės pavyzdys",
     createPlan: "Kurti mano planą",
-    stepsNote: "{n} trumpi žingsniai. Viską galėsi pakeisti vėliau.",
+    stepsNote: "{n} trumpi žingsniai, apie 1 minutė. Viską galėsi pakeisti vėliau.",
 
     // Onboarding common
     stepOf: "Žingsnis {a} iš {b}",
@@ -44,6 +44,12 @@ const T = {
     ],
     under18Note: "Jaunesniems nei 18 metų – paskutiniame žingsnyje sutikimą patvirtins tėvai ar globėjai.",
     needDob: "Įvesk gimimo datą.",
+    dobDay: "Diena",
+    dobMonth: "Mėnuo",
+    dobYear: "Metai",
+    laterNote: "Poilsio dienas, individualias treniruotes ir fizinį rengimą galėsi pridėti vėliau – Profilis → Keisti nustatymus.",
+    tipSc: "Ar turi fizinio rengimo (S&C) treniruočių?",
+    tipSkills: "Ar turi individualių treniruočių?",
 
     // Step: Leagues & games
     gamesTitle: "Lygos ir rungtynės",
@@ -296,7 +302,7 @@ const T = {
     welcomeText: "Games, team practice, skills, S&C and recovery in one schedule.",
     exampleWeek: "Example week",
     createPlan: "Create my plan",
-    stepsNote: "{n} short steps. You can change everything later.",
+    stepsNote: "{n} short steps, about 1 minute. You can change everything later.",
     stepOf: "Step {a} of {b}",
     next: "Continue",
     back: "Back",
@@ -325,6 +331,12 @@ const T = {
     ],
     under18Note: "Under 18? A parent or guardian confirms in the last step.",
     needDob: "Enter your date of birth.",
+    dobDay: "Day",
+    dobMonth: "Month",
+    dobYear: "Year",
+    laterNote: "You can add rest days, skills sessions and S&C later – Profile → Change settings.",
+    tipSc: "Do you have S&C sessions?",
+    tipSkills: "Do you have skills sessions?",
     gamesTitle: "Leagues and games",
     gamesText: "Choose the leagues you play in (up to 3).",
     league: "League",
