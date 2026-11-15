@@ -1,0 +1,7 @@
+{
+  "name": "athlete-planner",
+  "private": true,
+  "type": "module",
+  "description": "Only used by the schedule robot (scripts/). The app itself needs no install.",
+  "scripts": { "schedules": "node scripts/fetch-schedules.mjs" }
+}
