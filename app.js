@@ -13,7 +13,7 @@
 
 const VERSION = "0.2.1";
 // Demo mode: open the app with ?demo to see a sample season (stored separately from real data)
-const DEMO = new URLSearchParams(location.search).has("demo");
+const DEMO = new URLSearchParams(location.search).has("demo") || location.hash === "#demo";
 const STORAGE_KEY = DEMO ? "athlete-planner.demo" : "athlete-planner.v1";
 const FEEDBACK_URL = ""; // TODO: paste the Google Form link here
 
