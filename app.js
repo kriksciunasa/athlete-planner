@@ -11,8 +11,10 @@
 // moving a game automatically moves the rest/light days around it.
 // =============================================================
 
-const VERSION = "0.2";
-const STORAGE_KEY = "athlete-planner.v1";
+const VERSION = "0.2.1";
+// Demo mode: open the app with ?demo to see a sample season (stored separately from real data)
+const DEMO = new URLSearchParams(location.search).has("demo");
+const STORAGE_KEY = DEMO ? "athlete-planner.demo" : "athlete-planner.v1";
 const FEEDBACK_URL = ""; // TODO: paste the Google Form link here
 
 // ---------- 1. DATE HELPERS ----------
@@ -555,7 +557,7 @@ function screenProfile() {
       ${item("lock", t("privacy"), "privacy")}
       ${item("trash", t("resetData"), "resetAsk", "", "danger")}
     </div>
-    <p class="xs muted center" style="margin:0">${t("version", { v: VERSION })}</p>`;
+    <p class="xs muted center" style="margin:0">${t("version", { v: VERSION })}${DEMO ? " · DEMO" : ""}</p>`;
 }
 
 // ---------- 12. SHEETS (pop-ups from the bottom) ----------
@@ -881,6 +883,36 @@ function downloadIcs() {
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 10000);
 }
+
+// ---------- DEMO DATA ----------
+function seedDemo() {
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const s = defaultState(), today = todayKey(), start = addDays(mondayOf(today), -42);
+  s.lang = state.lang; s.onboarded = true; s.startDate = start; s.endDate = seasonEnd(today);
+  Object.assign(s.setup.profile, { sport: "basketball", dob: "2011-05-14", gender: "m", years: 6, height: 172, fitness: 3, parentOk: true });
+  s.setup.leagues = [{ source: "MKL", group: "U16 vaikinai", team: "Demo KM", name: "", url: "" }, { source: "RKL", group: "B divizionas, A grupė", team: "Demo KM", name: "", url: "" }];
+  Object.assign(s.setup.rest, { seasonEnd: s.endDate });
+  s.setup.sc.fileName = "S&C_planas.xlsx";
+  const opp = ["Tornado KM", "Sostinės KM", "Nacionalinė KA", "Telšių SRC", "KA „Žalgiris“", "Alytaus KA", "Panevėžio SC", "Šiaulių KA „Saulė“"];
+  let n = 0;
+  for (let k = addDays(start, 2); k <= addDays(today, 120); k = addDays(k, n % 2 ? 4 : 3)) {
+    s.games.push({ id: "g" + n, date: k, start: n % 2 ? "14:00" : "18:15", dur: 90, opponent: opp[n % opp.length], home: n % 2 === 0, venue: n % 2 === 0 ? "Namų salė" : "", league: n % 3 ? "MKL" : "RKL", status: "planned" });
+    n++;
+  }
+  const prev = state; state = s;
+  for (let k = start; k < today; k = addDays(k, 1)) {
+    const lastWeek = k >= addDays(mondayOf(today), -7);
+    for (const i of dayPlan(k).active) {
+      const rpe = Math.min(10, Math.round((lastWeek ? 7.5 : 5) + rnd() * 2));
+      s.log[i.id] = { rpe, minutes: i.type === "game" ? Math.round(12 + rnd() * 18) : null, pain: false, area: "", dur: i.dur, type: i.type, date: k };
+    }
+  }
+  const lastGame = s.games.filter(g => g.date < today).pop(); if (lastGame) Object.assign(s.log[lastGame.id], { pain: true, area: "knee" });
+  [224, 226, 225, 228, 227, 216].forEach((v, w) => s.tests.jumps.push({ date: addDays(start, 7 * w), vals: [v - 4, v, v - 2], best: v }));
+  s.tests.heights = [{ date: addDays(today, -90), cm: 169.5 }, { date: addDays(today, -60), cm: 170.5 }, { date: addDays(today, -30), cm: 171.5 }];
+  state = prev; return s;
+}
+if (DEMO && !state.onboarded) { state = seedDemo(); ui.screen = "main"; save(); }
 
 // ---------- START ----------
 render();
