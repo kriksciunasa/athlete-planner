@@ -281,13 +281,14 @@ function screenOnboarding() {
         ${seg(`setup.leagues.${i}.source`, [["MKL", "MKL"], ["RKL", "RKL"], ["other", t("other")]], l.source)}
         ${l.source !== "other" ? `
           ${field(t("group"), `<select class="inp" data-f="setup.leagues.${i}.group"><option value="">—</option>${LEAGUES[l.source].groups.map(g => `<option ${l.group === g ? "selected" : ""}>${g}</option>`).join("")}</select>`)}
-          ${field(t("team"), input(`setup.leagues.${i}.team`, l.team, "text", `placeholder="${t("teamPh")}"`))}` : `
+          ${teamField(l, i)}` : `
           ${field(t("leagueName"), input(`setup.leagues.${i}.name`, l.name, "text"))}
           ${field(t("leagueUrl"), input(`setup.leagues.${i}.url`, l.url, "url", 'placeholder="https://"'))}
           <p class="small muted" style="margin:0">${t("otherHelp")}</p>`}
       </div>`).join("")}
       ${s.leagues.length < 3 ? `<button class="btn2 dashed" data-a="addLeague">${ic("plus")} ${t("addLeague")}</button>` : ""}
-      ${gameForm()}`;
+      ${ui.schedules ? `<p class="small muted" style="margin:0">${t("autoInfo")}</p>` : ""}
+      ${!ui.schedules || ui.showManual || s.leagues.some(l => l.source === "other") ? gameForm() : `<button class="btn3 volt" style="width:100%" data-a="showManual">${ic("plus", "width:18px;height:18px")} ${t("addManual")}</button>`}`;
   }
   if (name === "practice") {
     body = `<h1 class="h1">${t("practiceTitle")}</h1><p class="p">${t("practiceText")}</p>
@@ -352,6 +353,60 @@ function screenOnboarding() {
     ${ui.error ? `<p class="err">${esc(ui.error)}</p>` : ""}
     <div class="grow"></div>
     <button class="btn" data-a="${last ? "finish" : "next"}">${last ? (ui.editing ? t("saveChanges") : t("buildSeason")) + " " + ic("arrow") : t("next")}</button></div>`;
+}
+
+// ---------- SCHEDULES FROM THE ROBOT ----------
+// data/schedules.json is written every night by the GitHub robot (scripts/fetch-schedules.mjs).
+function scheduleFor(l) { return ui.schedules?.leagues?.[l.source]?.[l.group] || null; }
+function teamsFor(l) {
+  const games = scheduleFor(l); if (!games) return [];
+  return [...new Set(games.flatMap(g => [g.home, g.away]))].sort((a, b) => a.localeCompare(b, "lt"));
+}
+function teamGames(l) { return (scheduleFor(l) || []).filter(g => g.home === l.team || g.away === l.team); }
+function teamField(l, i) {
+  const teams = teamsFor(l);
+  if (!teams.length || l.teamManual) return field(t("team"), input(`setup.leagues.${i}.team`, l.team, "text", `placeholder="${t("teamPh")}"`));
+  const n = l.team ? teamGames(l).length : 0;
+  return `${field(t("team"), `<select class="inp" data-f="setup.leagues.${i}.team"><option value="">${t("chooseTeam")}</option>${teams.map(x => `<option ${l.team === x ? "selected" : ""}>${esc(x)}</option>`).join("")}</select>`)}
+    ${l.team ? `<span class="small" style="color:var(--green)">${ic("check", "width:16px;height:16px;vertical-align:-3px")} ${t("gamesFound", { n })}</span>` : ""}
+    <button class="btn3" style="height:32px;font-size:13px;text-align:left" data-a="teamManual" data-i="${i}">${t("teamNotListed")}</button>`;
+}
+// Copies the chosen teams' games into the calendar and keeps them up to date.
+// A game the user edited by hand is never overwritten.
+function syncSchedules() {
+  if (!ui.schedules) return 0;
+  const today = todayKey(), seen = new Set(); let changed = 0;
+  for (const l of state.setup.leagues) {
+    if (l.source === "other" || !l.group || !l.team) continue;
+    for (const g of teamGames(l)) {
+      const id = "a:" + (g.url ? g.url.replace(/^https?:\/\/[^/]+/, "").replace(/\?.*$/, "") : `${l.source}|${l.group}|${g.date}|${g.home}|${g.away}`);
+      seen.add(id);
+      const home = g.home === l.team, opponent = home ? g.away : g.home, league = `${l.source} ${l.group}`;
+      const ex = state.games.find(x => x.id === id);
+      if (!ex) { state.games.push({ id, auto: true, date: g.date, start: g.time, dur: 90, opponent, home, venue: g.venue, league, status: "planned" }); changed++; continue; }
+      if (ex.userEdited) continue;
+      if (ex.date !== g.date || ex.start !== g.time) {
+        if (ex.date !== g.date && !ex.origDate) ex.origDate = ex.date;
+        Object.assign(ex, { date: g.date, start: g.time, status: ex.origDate && ex.origDate !== g.date ? "postponed" : "planned" }); changed++;
+      }
+      Object.assign(ex, { venue: g.venue || ex.venue, opponent, home, league });
+    }
+  }
+  // games that disappeared from the league schedule (and weren't edited) are removed
+  const before = state.games.length;
+  state.games = state.games.filter(g => !g.auto || g.userEdited || seen.has(g.id) || g.date < today);
+  changed += before - state.games.length;
+  state.schedulesUpdated = ui.schedules.updated;
+  return changed;
+}
+async function loadSchedules() {
+  try {
+    const res = await fetch("data/schedules.json", { cache: "no-cache" });
+    if (!res.ok) return;
+    ui.schedules = await res.json();
+    if (state.onboarded && !DEMO) syncSchedules();
+    save(); render();
+  } catch (e) { /* offline or not on GitHub Pages: manual games still work */ }
 }
 
 function gameForm() {
@@ -551,6 +606,7 @@ function screenProfile() {
     <div class="list">
       ${item("refresh", t("editSetup"), "editSetup", ic("fwd", "width:18px;height:18px;color:var(--ink-muted)"))}
       ${item("cal", t("addToCal"), "exportIcs")}
+      ${ui.schedules ? item("refresh", t("updateNow"), "refreshSchedules", `<span class="xs muted">${t("schedulesUpdated", { d: fmtShort(keyOf(new Date(ui.schedules.updated))) })}</span>`) : ""}
       <div class="li">${ic("globe", "width:20px;height:20px")}<span class="grow" style="font-size:15px">${t("language")}</span><div style="width:150px">${seg("lang", [["lt", "LT"], ["en", "EN"]], state.lang)}</div></div>
       ${FEEDBACK_URL ? `<a class="li" href="${FEEDBACK_URL}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${ic("msg", "width:20px;height:20px")}<span class="grow" style="font-size:15px">${t("feedback")}</span></a>` : ""}
       ${item("bell", t("reminders"), "openReminders", ic("fwd", "width:18px;height:18px;color:var(--ink-muted)"))}
@@ -687,6 +743,9 @@ const actions = {
   },
   back() { ui.error = ""; if (ui.step > 1) ui.step--; else ui.screen = ui.editing ? "main" : "welcome"; scrollTo(0, 0); },
   goStep(el) { ui.step = Number(el.dataset.v); ui.error = ""; scrollTo(0, 0); },
+  showManual() { ui.showManual = true; },
+  teamManual(el) { state.setup.leagues[Number(el.dataset.i)].teamManual = true; },
+  async refreshSchedules() { await loadSchedules(); },
   addLeague() { if (state.setup.leagues.length < 3) state.setup.leagues.push({ source: "MKL", group: "", team: "", name: "", url: "" }); },
   removeLeague(el) { state.setup.leagues.splice(Number(el.dataset.i), 1); },
   addGame() {
@@ -699,6 +758,7 @@ const actions = {
     const p = state.setup.profile, age = ageOn(p.dob);
     if (age !== null && age < 18 && !p.parentOk) { ui.error = t("needParent"); return; }
     if (!state.startDate) state.startDate = mondayOf(todayKey());
+    syncSchedules();
     state.endDate = state.setup.rest.seasonEnd || seasonEnd(todayKey());
     const wasEditing = ui.editing;
     state.onboarded = true; ui.error = ""; ui.editing = false;
@@ -736,6 +796,7 @@ const actions = {
   },
   saveGame() {
     const f = ui.form, g = state.games.find(x => x.id === f.id); if (!g) return;
+    g.userEdited = true;
     if (f.date !== g.date && !g.origDate) g.origDate = g.date;
     Object.assign(g, { date: f.date, start: f.start, opponent: f.opponent, home: f.home !== false, venue: f.venue, status: f.status });
     if (g.status === "planned" && g.origDate === g.date) delete g.origDate;
@@ -916,3 +977,4 @@ if (DEMO && !state.onboarded) { state = seedDemo(); ui.screen = "main"; save(); 
 
 // ---------- START ----------
 render();
+loadSchedules();

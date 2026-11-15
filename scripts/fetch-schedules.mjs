@@ -84,34 +84,27 @@ async function scrapeRKL(browser, report) {
   let sampleJson = null;
   page.on("response", async res => { try { if (!sampleJson && /rkl\/v1\/matches/.test(res.url())) sampleJson = { url: res.url(), body: (await res.text()).slice(0, 30000) }; } catch (e) {} });
   await page.goto("https://www.rkl.lt/rungtynes/#tvarkarastis", { waitUntil: "networkidle", timeout: 60000 });
+  // show every row (other months are hidden), so their text can be read
+  await page.addStyleTag({ content: "[data-rkl-month]{display:table-row !important} [data-rkl-group-panel]{display:block !important}" });
   for (const [group, key] of Object.entries(RKL_BUTTONS)) {
     try {
+      const panelSel = `[data-rkl-panel-inner="tvarkarastis"] [data-rkl-group-panel="${key}"]`;
       await page.evaluate(k => {
-        const panel = document.querySelector('[data-rkl-panel-inner="tvarkarastis"]') || document;
-        const btn = panel.querySelector(`[data-rkl-group-button="${k}"]`) || document.querySelector(`[data-rkl-group-button="${k}"]`);
-        if (btn) btn.click();
-        else { const sel = panel.querySelector('select[data-rkl-select="group"]'); if (sel) { sel.value = k; sel.dispatchEvent(new Event("change", { bubbles: true })); } }
-      }, key);
-      await page.waitForLoadState("networkidle", { timeout: 20000 }).catch(() => {});
-      await sleep(1200);
-      await page.evaluate(() => {
-        const panel = document.querySelector('[data-rkl-panel-inner="tvarkarastis"]') || document;
-        const m = panel.querySelector('select[data-rkl-select="month"]');
-        if (m && m.value !== "") { m.value = ""; m.dispatchEvent(new Event("change", { bubbles: true })); }
-      });
-      await page.waitForLoadState("networkidle", { timeout: 20000 }).catch(() => {});
-      await sleep(1500);
-      const rows = await page.evaluate(() => {
         const panel = document.querySelector('[data-rkl-panel-inner="tvarkarastis"]');
-        const root = panel ? panel.closest("[data-rkl-panel], section, div") || document : document;
-        return [...root.querySelectorAll("tr")].map(tr => ({
-          cells: [...tr.querySelectorAll("td,th")].map(td => td.innerText.replace(/\s+/g, " ").trim()),
-          links: [...tr.querySelectorAll("a[href]")].map(a => a.href)
-        })).filter(r => r.cells.length >= 3);
-      });
-      out[group] = parseRows(rows).filter(g => g.url ? /rkl\.lt\/rungtynes\/\d+/.test(g.url) : true);
+        const btn = panel?.querySelector(`[data-rkl-group-button="${k}"]`);
+        if (btn) btn.click();
+        else { const sel = panel?.querySelector('select[data-rkl-select="group"]'); if (sel) { sel.value = k; sel.dispatchEvent(new Event("change", { bubbles: true })); } }
+      }, key);
+      await page.waitForSelector(`${panelSel} tbody tr`, { state: "attached", timeout: 20000 }).catch(() => {});
+      await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {});
+      await sleep(1000);
+      const rows = await page.evaluate(sel => [...document.querySelectorAll(`${sel} tr`)].map(tr => ({
+        cells: [...tr.querySelectorAll("td,th")].map(td => (td.innerText || td.textContent).replace(/\s+/g, " ").replace(/\s*Apžvalga\s*$/, "").trim()),
+        links: [...tr.querySelectorAll("a[href]")].map(a => a.href)
+      })).filter(r => r.cells.length >= 3), panelSel);
+      out[group] = parseRows(rows).filter(g => !g.url || /rkl\.lt\/rungtynes\/\d+/.test(g.url));
       report.counts[`RKL ${group}`] = out[group].length;
-      if (key === "a") await saveDebug("rkl-a", page, { rows: rows.slice(0, 40), sampleJson });
+      if (key === "b1") await saveDebug("rkl-b1", page, { rows: rows.slice(0, 20) });
     } catch (e) { report.errors.push(`RKL ${group}: ${e.message.split("\n")[0]}`); }
   }
   await page.close();
