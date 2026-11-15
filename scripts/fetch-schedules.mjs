@@ -55,7 +55,7 @@ function parseRows(rows) {
     if (!time) { const d = toIso(joined); if (d) currentDate = d; continue; } // heading row with only a date
     const date = (dateCell && toIso(dateCell)) || toIso(joined) || currentDate;
     if (!date) continue;
-    const teams = r.cells.filter(c => c && !TIME.test(c) && !toIso(c) && !NOISE.test(c) && !/\d+\s*[:–-]\s*\d+/.test(c) && c.length > 1 && c.length < 60 && !/,/.test(c));
+    const teams = r.cells.filter(c => c && !/^\d{1,4}$/.test(c) && !TIME.test(c) && !toIso(c) && !NOISE.test(c) && !/\d+\s*[:–-]\s*\d+/.test(c) && c.length > 1 && c.length < 60 && !/,/.test(c));
     if (teams.length < 2) continue;
     const venue = r.cells.filter(c => /,/.test(c)).sort((a, b) => b.length - a.length)[0] || "";
     const link = r.links.find(l => /rungtynes\/\d+|match|game|rungtyn/i.test(l)) || "";
@@ -73,63 +73,88 @@ async function saveDebug(name, page, extra) {
   if (extra) await fs.writeFile(`${DEBUG_DIR}/${name}.json`, JSON.stringify(extra, null, 1).slice(0, 400000));
 }
 
+const RKL_BUTTONS = { "A divizionas": "a", "B divizionas, A grupė": "b1", "B divizionas, B grupė": "b2", "B divizionas, C grupė": "b3", "B divizionas, D grupė": "b4" };
+
+// RKL: the schedule widget has a tab button per division and a month filter
+// (it shows only the current month by default). We click each division, set
+// the month to "Visi" (all), and read the table.
 async function scrapeRKL(browser, report) {
   const page = await browser.newPage({ userAgent: UA });
   const out = {};
+  let sampleJson = null;
+  page.on("response", async res => { try { if (!sampleJson && /rkl\/v1\/matches/.test(res.url())) sampleJson = { url: res.url(), body: (await res.text()).slice(0, 30000) }; } catch (e) {} });
   await page.goto("https://www.rkl.lt/rungtynes/#tvarkarastis", { waitUntil: "networkidle", timeout: 60000 });
-  await saveDebug("rkl-initial", page, await page.evaluate(readRows));
-  // find the division <select>
-  const selectInfo = await page.evaluate(() => {
-    const s = [...document.querySelectorAll("select")].find(s => [...s.options].some(o => /divizion/i.test(o.text)));
-    if (!s) return null;
-    s.setAttribute("data-ap", "division");
-    return [...s.options].map(o => ({ value: o.value, text: o.text.trim() }));
-  });
-  report.rklSelect = selectInfo;
-  for (const group of RKL_GROUPS) {
+  for (const [group, key] of Object.entries(RKL_BUTTONS)) {
     try {
-      if (selectInfo) {
-        const opt = selectInfo.find(o => norm(o.text) === norm(group));
-        if (!opt) { report.errors.push(`RKL: option not found: ${group}`); continue; }
-        await page.selectOption('select[data-ap="division"]', opt.value);
-        // submit the filter form if there is one
-        await page.evaluate(() => {
-          const s = document.querySelector('select[data-ap="division"]'), f = s.closest("form");
-          if (f) { const b = f.querySelector('button, input[type="submit"]'); b ? b.click() : f.submit(); }
-        });
-        await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
-        await sleep(1500);
-        await page.evaluate(() => { const s = [...document.querySelectorAll("select")].find(s => [...s.options].some(o => /divizion/i.test(o.text))); if (s) s.setAttribute("data-ap", "division"); });
-      }
-      const rows = await page.evaluate(readRows);
-      out[group] = parseRows(rows);
+      await page.evaluate(k => {
+        const panel = document.querySelector('[data-rkl-panel-inner="tvarkarastis"]') || document;
+        const btn = panel.querySelector(`[data-rkl-group-button="${k}"]`) || document.querySelector(`[data-rkl-group-button="${k}"]`);
+        if (btn) btn.click();
+        else { const sel = panel.querySelector('select[data-rkl-select="group"]'); if (sel) { sel.value = k; sel.dispatchEvent(new Event("change", { bubbles: true })); } }
+      }, key);
+      await page.waitForLoadState("networkidle", { timeout: 20000 }).catch(() => {});
+      await sleep(1200);
+      await page.evaluate(() => {
+        const panel = document.querySelector('[data-rkl-panel-inner="tvarkarastis"]') || document;
+        const m = panel.querySelector('select[data-rkl-select="month"]');
+        if (m && m.value !== "") { m.value = ""; m.dispatchEvent(new Event("change", { bubbles: true })); }
+      });
+      await page.waitForLoadState("networkidle", { timeout: 20000 }).catch(() => {});
+      await sleep(1500);
+      const rows = await page.evaluate(() => {
+        const panel = document.querySelector('[data-rkl-panel-inner="tvarkarastis"]');
+        const root = panel ? panel.closest("[data-rkl-panel], section, div") || document : document;
+        return [...root.querySelectorAll("tr")].map(tr => ({
+          cells: [...tr.querySelectorAll("td,th")].map(td => td.innerText.replace(/\s+/g, " ").trim()),
+          links: [...tr.querySelectorAll("a[href]")].map(a => a.href)
+        })).filter(r => r.cells.length >= 3);
+      });
+      out[group] = parseRows(rows).filter(g => g.url ? /rkl\.lt\/rungtynes\/\d+/.test(g.url) : true);
       report.counts[`RKL ${group}`] = out[group].length;
-      if (group === RKL_GROUPS[0]) await saveDebug("rkl-a", page, rows);
-    } catch (e) { report.errors.push(`RKL ${group}: ${e.message}`); }
+      if (key === "a") await saveDebug("rkl-a", page, { rows: rows.slice(0, 40), sampleJson });
+    } catch (e) { report.errors.push(`RKL ${group}: ${e.message.split("\n")[0]}`); }
   }
   await page.close();
   return out;
+}
+
+// MKL: one page per age group, 20 games per page, with "next page" arrows.
+// Row cells: [date + time, game no., home team, score, away team, venue]
+function parseMklRows(rows) {
+  const games = [];
+  for (const r of rows) {
+    const m = (r.cells[0] || "").match(/(20\d{2}-\d{2}-\d{2})\s+(\d{1,2}:\d{2})/);
+    if (!m || r.cells.length < 5) continue;
+    const home = r.cells[2], away = r.cells[4];
+    if (!home || !away) continue;
+    games.push({ date: m[1], time: m[2].padStart(5, "0"), home, away, venue: r.cells[5] || "", url: r.links.find(l => /\/game\//.test(l)) || "" });
+  }
+  return games;
 }
 
 async function scrapeMKL(browser, report) {
   const out = {};
   for (const [group, id] of Object.entries(MKL)) {
     const page = await browser.newPage({ userAgent: UA });
-    const jsonHits = [];
-    page.on("response", async res => {
-      try {
-        const ct = res.headers()["content-type"] || "";
-        if (ct.includes("json") && jsonHits.length < 15) { const body = await res.text(); jsonHits.push({ url: res.url(), body: body.slice(0, 20000) }); }
-      } catch (e) { /* ignore */ }
-    });
     try {
       await page.goto(`https://mkl.lt/league/${id}/schedule`, { waitUntil: "networkidle", timeout: 60000 });
-      await sleep(3000);
-      const rows = await page.evaluate(readRows);
-      out[group] = parseRows(rows);
+      await sleep(2000);
+      const all = new Map();
+      for (let p = 0; p < 40; p++) {
+        const rows = await page.evaluate(readRows);
+        const games = parseMklRows(rows);
+        let added = 0;
+        for (const g of games) { const k = g.url || `${g.date}|${g.time}|${g.home}|${g.away}`; if (!all.has(k)) { all.set(k, g); added++; } }
+        if (group === "U16 vaikinai" && p === 0) await saveDebug("mkl-u16", page, { rows: rows.slice(0, 30) });
+        const next = await page.$('[id$="-page-next"]');
+        if (!next || added === 0) break;
+        await next.click();
+        await page.waitForLoadState("networkidle", { timeout: 20000 }).catch(() => {});
+        await sleep(1200);
+      }
+      out[group] = [...all.values()].sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
       report.counts[`MKL ${group}`] = out[group].length;
-      if (group === "U16 vaikinai") await saveDebug("mkl-u16", page, { rows: rows.slice(0, 80), json: jsonHits });
-    } catch (e) { report.errors.push(`MKL ${group}: ${e.message}`); }
+    } catch (e) { report.errors.push(`MKL ${group}: ${e.message.split("\n")[0]}`); }
     await page.close();
     await sleep(1000); // be polite to the league's server
   }
