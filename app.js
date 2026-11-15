@@ -11,7 +11,7 @@
 // moving a game automatically moves the rest/light days around it.
 // =============================================================
 
-const VERSION = "0.1";
+const VERSION = "0.2";
 const STORAGE_KEY = "athlete-planner.v1";
 const FEEDBACK_URL = ""; // TODO: paste the Google Form link here
 
@@ -73,7 +73,20 @@ function defaultState() {
     custom: [],  // { id, date, start, dur, type, title }
     over: {},    // changes to generated sessions: { [id]: { cancelled, start, dur } }
     log: {},     // check-ins: { [id]: { rpe, minutes, pain, area, dur, type, date } }
-    tests: { jumps: [], heights: [] }
+    tests: { jumps: [], heights: [] },
+    reminders: defaultReminders()
+  };
+}
+// Recommended reminder rules. "before" = minutes before start (0 = none), "eve" = the evening before.
+function defaultReminders() {
+  return {
+    eveTime: "20:00", quiet: true,
+    game: { eve: true, before: 180 },
+    team: { eve: false, before: 30 },
+    sc: { eve: false, before: 30 },
+    skills: { eve: false, before: 60 },
+    recovery: { eve: false, before: 0 },
+    other: { eve: false, before: 30 }
   };
 }
 let state;
@@ -362,7 +375,7 @@ function screenNotify() {
   return `<div class="scr">
     <div style="width:72px;height:72px;border-radius:16px;background:var(--volt);display:flex;align-items:center;justify-content:center;margin-top:40px;color:var(--black-900)">${ic("bell", "width:36px;height:36px")}</div>
     <h1 class="h1" style="font-size:40px">${esc(t("notifyTitle"))}</h1><p class="p">${t("notifyText")}</p>
-    <div class="col" style="gap:10px">${tip("−30'", t("remindDay"), t("remindDaySub"))}${tip("−2 h", t("remindGame"), t("remindGameSub"))}${tip("✓", t("remindCheck"), t("remindCheckSub"))}</div>
+    <div class="col" style="gap:10px">${tip("−30'", t("remindDay"), t("remindDaySub"))}${tip("20:00", t("remindGame"), t("remindGameSub"))}${tip("✓", t("remindCheck"), t("remindCheckSub"))}</div>
     <div class="grow"></div>
     ${!standalone && ios ? `<p class="small muted center" style="margin:0">${t("iosHint")}</p>` : ""}
     ${!standalone && ui.installEvt ? `<div class="card tight row" style="flex-direction:row">${ic("phone", "color:var(--volt)")}<span class="grow col" style="gap:2px"><span class="bold small">${t("androidInstall")}</span><span class="xs muted">${t("androidInstallSub")}</span></span><button class="btn2" style="width:auto;height:36px;padding:0 14px" data-a="install">${t("install")}</button></div>` : ""}
@@ -538,6 +551,7 @@ function screenProfile() {
       ${item("cal", t("addToCal"), "exportIcs")}
       <div class="li">${ic("globe", "width:20px;height:20px")}<span class="grow" style="font-size:15px">${t("language")}</span><div style="width:150px">${seg("lang", [["lt", "LT"], ["en", "EN"]], state.lang)}</div></div>
       ${FEEDBACK_URL ? `<a class="li" href="${FEEDBACK_URL}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${ic("msg", "width:20px;height:20px")}<span class="grow" style="font-size:15px">${t("feedback")}</span></a>` : ""}
+      ${item("bell", t("reminders"), "openReminders", ic("fwd", "width:18px;height:18px;color:var(--ink-muted)"))}
       ${item("lock", t("privacy"), "privacy")}
       ${item("trash", t("resetData"), "resetAsk", "", "danger")}
     </div>
@@ -594,6 +608,20 @@ function sheetHtml() {
       ${ui.error ? `<p class="err">${esc(ui.error)}</p>` : ""}
       <button class="btn" data-a="saveCheckin">${t("saveCheckin")}</button>`;
   }
+  if (s.kind === "reminders") {
+    const R = state.reminders, opts = [0, 15, 30, 60, 120, 180];
+    const rowR = type => `<div class="card tight" style="gap:10px"><span class="row bold" style="gap:8px;font-size:15px">${ic(typeIcon[type], `color:var(--${type === "game" ? "volt" : "green"});width:20px;height:20px`)}${t("types")[type]}</span>
+      <div class="grid2">${field(t("rBefore"), `<select class="inp" data-f="rem.${type}.before" data-t="num">${opts.map(o => `<option value="${o}" ${R[type].before === o ? "selected" : ""}>${o === 0 ? t("rNone") : o < 60 ? o + " " + t("min") : hm(o)}</option>`).join("")}</select>`)}
+        <label class="check" style="min-height:44px;align-self:end"><input type="checkbox" data-f="rem.${type}.eve" ${R[type].eve ? "checked" : ""}><span class="small">${t("rEve")}</span></label></div></div>`;
+    body = `<div class="row between"><span class="h2">${t("reminders")}</span><button class="icon-btn plain" aria-label="${t("close")}" data-a="closeSheet">${ic("x")}</button></div>
+      <p class="small muted" style="margin:0">${t("remindersSub")}</p>
+      ${["game", "team", "sc", "skills", "recovery", "other"].map(rowR).join("")}
+      <div class="grid2">${field(t("eveTime"), `<input class="inp" type="time" data-f="rem.eveTime" value="${esc(R.eveTime)}">`)}
+        <label class="check" style="min-height:44px;align-self:end"><input type="checkbox" data-f="rem.quiet" ${R.quiet ? "checked" : ""}><span class="small">${t("quietHours")}<span class="sub">22:00–07:00</span></span></label></div>
+      <p class="xs muted" style="margin:0">${t("remindersNote")}</p>
+      <button class="btn" data-a="exportIcs">${ic("cal")} ${t("addToCal")}</button>
+      <button class="btn3" data-a="resetReminders">${t("recommended")}</button>`;
+  }
   if (s.kind === "privacy") {
     body = `<div class="row between"><span class="h2">${t("privacy")}</span><button class="icon-btn plain" aria-label="${t("close")}" data-a="closeSheet">${ic("x")}</button></div><p class="p" style="color:var(--ink)">${t("privacyFull")}</p>`;
   }
@@ -625,7 +653,7 @@ function render() {
 // e.g. "setup.practice.start" → state.setup.practice.start
 function rootFor(path) {
   const [head, ...rest] = path.split(".");
-  const roots = { setup: state.setup, form: ui.form, newGame: ui.newGame, jump: ui.jump, lang: state, heightIn: ui };
+  const roots = { setup: state.setup, form: ui.form, newGame: ui.newGame, jump: ui.jump, lang: state, heightIn: ui, rem: state.reminders };
   return { obj: roots[head], rest: head === "lang" ? ["lang"] : head === "heightIn" ? ["heightIn"] : rest };
 }
 function setPath(path, value) {
@@ -749,6 +777,8 @@ const actions = {
   },
   editSetup() { ui.screen = "onb"; ui.step = 1; ui.editing = true; scrollTo(0, 0); },
   privacy() { ui.sheet = { kind: "privacy" }; },
+  openReminders() { ui.sheet = { kind: "reminders" }; },
+  resetReminders() { state.reminders = defaultReminders(); },
   resetAsk() { ui.sheet = { kind: "reset" }; },
   resetDo() { const lang = state.lang; state = defaultState(); state.lang = lang; save(); ui.sheet = null; ui.screen = "welcome"; },
   closeSheet() { ui.sheet = null; ui.error = ""; },
@@ -792,18 +822,53 @@ addEventListener("beforeinstallprompt", e => { e.preventDefault(); ui.installEvt
 
 // ---------- 16. CALENDAR EXPORT (.ics) ----------
 // Creates a calendar file with alarms. The phone's own calendar then sends the reminders.
+// Reminder rules:
+//  - "before": X minutes before the start (e.g. games 3 h before = time to eat).
+//  - "evening before": one reminder at e.g. 20:00 listing tomorrow's plan,
+//    attached only to the first item of tomorrow that asks for it.
+//  - Grouping: sessions starting within 60 min of an earlier reminded one share its reminder.
+//  - Quiet hours (22:00–07:00): a reminder that would fall before 07:00 moves to 07:00.
+function remindersFor(items) {
+  const label = i => `${i.start} ${i.type === "game" ? t("types").game + " " : ""}${itemTitle(i)}`;
+  const R = state.reminders, out = new Map(); // item.id -> [{ minutesBefore, text }]
+  const add = (i, m, text) => { if (!out.has(i.id)) out.set(i.id, []); out.get(i.id).push({ m, text }); };
+  // evening before
+  const eveItems = items.filter(i => (R[i.type] || R.other).eve);
+  if (eveItems.length) {
+    const first = eveItems[0];
+    const minutes = toMin(first.start) + (1440 - toMin(R.eveTime));
+    const list = eveItems.map(label).join(", ");
+    add(first, minutes, `${t("tomorrow")}: ${list}`);
+  }
+  // before start, with grouping and quiet hours
+  let lastRemindedStart = -999;
+  for (const i of items) {
+    const before = (R[i.type] || R.other).before; if (!before) continue;
+    const st = toMin(i.start);
+    if (st - lastRemindedStart < 60 && i.type !== "game") continue; // grouped with the previous reminder
+    let at = st - before;
+    if (R.quiet && at < 7 * 60) { if (st <= 7 * 60) continue; at = 7 * 60; }
+    const sameTime = items.filter(x => x !== i && toMin(x.start) >= st && toMin(x.start) - st < 60 && (R[x.type] || R.other).before && x.type !== "game");
+    const text = [i, ...sameTime].map(label).join(" · ");
+    add(i, st - at, text);
+    lastRemindedStart = st;
+  }
+  return out;
+}
 function buildIcs() {
-  const icsEsc = s => String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+  const icsEsc = s => String(s).replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
   const dt = (k, time) => k.replaceAll("-", "") + "T" + time.replace(":", "") + "00";
   const stamp = new Date().toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z";
   const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Athlete Planner//EN", "CALSCALE:GREGORIAN", `X-WR-CALNAME:${t("appName")}`];
   for (let k = todayKey(); k <= (state.endDate || seasonEnd(todayKey())); k = addDays(k, 1)) {
-    for (const i of dayPlan(k).active) {
+    const items = dayPlan(k).active, alarms = remindersFor(items);
+    for (const i of items) {
       const endMin = toMin(i.start) + i.dur, endK = endMin >= 1440 ? addDays(k, 1) : k;
       const title = i.type === "game" ? `${t("types").game}: ${itemTitle(i)}` : itemTitle(i);
       lines.push("BEGIN:VEVENT", `UID:${i.id.replace("|", "-")}@athlete-planner`, `DTSTAMP:${stamp}`, `DTSTART:${dt(k, i.start)}`, `DTEND:${dt(endK, fromMin(endMin % 1440))}`, `SUMMARY:${icsEsc(title)}`);
       if (i.type === "game" && i.game.venue) lines.push(`LOCATION:${icsEsc(i.game.venue)}`);
-      lines.push("BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${icsEsc(title)}`, `TRIGGER:-PT${i.type === "game" ? 120 : 30}M`, "END:VALARM", "END:VEVENT");
+      for (const a of alarms.get(i.id) || []) lines.push("BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${icsEsc(a.text)}`, `TRIGGER:-PT${a.m}M`, "END:VALARM");
+      lines.push("END:VEVENT");
     }
   }
   lines.push("END:VCALENDAR");
