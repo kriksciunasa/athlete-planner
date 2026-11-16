@@ -10,7 +10,8 @@
   --ink-muted: #A3ABA3;  /* secondary text */
   --volt: #D7FF3C;       /* games, main buttons */
   --green: #2BE36F;      /* training, done */
-  --danger: #FF5A4E;     /* red flags */
+  --danger: #FF5A4E;     /* red flags: borders, icons */
+  --danger-strong: #E03A2F; /* red warning text: bold and large */
   --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
   --sans: "Inter", system-ui, -apple-system, sans-serif;
 }
@@ -185,3 +186,5 @@ details.card summary { list-style: none; }
 details.card summary::-webkit-details-marker { display: none; }
 details.card summary::after { content: ' +'; color: var(--volt); }
 details[open].card summary::after { content: ' −'; }
+.warn { color: var(--danger-strong); font-weight: 700; font-size: 19px; line-height: 26px; }
+.card.flag { border-color: var(--danger-strong); border-width: 2px; }

@@ -11,7 +11,7 @@
 // moving a game automatically moves the rest/light days around it.
 // =============================================================
 
-const VERSION = "0.4";
+const VERSION = "0.4.1";
 // Demo mode: open the app with ?demo to see a sample season (stored separately from real data)
 const DEMO = new URLSearchParams(location.search).has("demo") || location.hash === "#demo";
 const STORAGE_KEY = DEMO ? "athlete-planner.demo" : "athlete-planner.v1";
@@ -581,7 +581,7 @@ function screenLoad() {
   const red = [spikeFlag && (bigSpike ? t("suggestSpikeBig", { p: pct }) : t("suggestSpike", { p: pct })), painFlag && t("suggestPain"), hoursFlag && t("suggestHours"), restFlag && t("suggestRest")].filter(Boolean);
   const diary = (state.painLog || []).slice(-3).reverse();
   return `${navLoad(mon)}
-    ${red.length ? `<div class="card flag" style="gap:10px">${red.map(x => `<span class="row small" style="align-items:flex-start;gap:8px">${ic("alert", "color:var(--danger);width:18px;height:18px;margin-top:1px")}<span>${x}</span></span>`).join("")}
+    ${red.length ? `<div class="card flag" style="gap:10px">${red.map(x => `<span class="row warn" style="align-items:flex-start;gap:10px">${ic("alert", "width:24px;height:24px;margin-top:1px")}<span>${x}</span></span>`).join("")}
       <button class="btn2" data-a="openWeek" data-k="${mon}">${t("openWeek")}</button></div>`
       : `<div class="card row" style="flex-direction:row">${ic("check", "color:var(--green)")}<span class="bold">${t("allGood")}</span></div>`}
     <div class="tiles">
@@ -612,7 +612,7 @@ function screenTests() {
   if (J.length >= 3) {
     const lastJ = J[J.length - 1], prev = J.slice(-5, -1), avg = prev.reduce((a, b) => a + b.best, 0) / prev.length;
     const drop = Math.round((1 - lastJ.best / avg) * 100);
-    if (drop >= 5) warn = `<div class="card flag row" style="flex-direction:row;align-items:flex-start">${ic("alert", "color:var(--danger);width:20px;height:20px")}<span class="small"><span class="bold">${t("jumpDrop", { p: drop })}</span> <span class="muted">${t("jumpDropSub")}</span></span></div>`;
+    if (drop >= 5) warn = `<div class="card flag row" style="flex-direction:row;align-items:flex-start">${ic("alert", "color:var(--danger-strong);width:24px;height:24px")}<span class="warn">${t("jumpDrop", { p: drop })} ${t("jumpDropSub")}</span></div>`;
   }
   const best = Math.max(0, ...ui.jump.map(Number).filter(Boolean));
   const lastH = H[H.length - 1], oldH = H.find(h => h.date >= addDays(todayKey(), -100));
@@ -629,7 +629,7 @@ function screenTests() {
     <div class="card"><div class="row between"><span class="col" style="gap:2px"><span class="bold" style="font-size:15px">${t("heightMonthly")}</span>${change !== null ? `<span class="small muted">${t("heightChange", { c: (change > 0 ? "+" : "") + change })}</span>` : ""}</span>
       <span style="font-family:var(--display);font-weight:700;font-size:24px">${lastH ? lastH.cm + " cm" : "—"}</span></div>
       <div class="row">${`<input class="inp" type="number" inputmode="decimal" min="50" max="250" placeholder="${t("heightCm")}" data-f="heightIn" value="${esc(ui.heightIn)}">`}<button class="btn2" style="width:auto;padding:0 18px" data-a="saveHeight">${t("save")}</button></div>
-      ${change !== null && change >= 1.8 ? `<span class="row small" style="gap:8px;align-items:flex-start;color:var(--danger)">${ic("alert", "width:18px;height:18px")}<span>${t("growthNote")}</span></span>` : ""}</div>
+      ${change !== null && change >= 1.8 ? `<span class="row warn" style="gap:10px;align-items:flex-start">${ic("alert", "width:24px;height:24px")}<span>${t("growthNote")}</span></span>` : ""}</div>
     ${why(t("heightWhy"))}
     <p class="xs muted" style="margin:0;padding:0 4px">${t("testsGeneral")}</p>`;
 }
