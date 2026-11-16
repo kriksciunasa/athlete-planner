@@ -11,7 +11,7 @@
 // moving a game automatically moves the rest/light days around it.
 // =============================================================
 
-const VERSION = "0.3";
+const VERSION = "0.4";
 // Demo mode: open the app with ?demo to see a sample season (stored separately from real data)
 const DEMO = new URLSearchParams(location.search).has("demo") || location.hash === "#demo";
 const STORAGE_KEY = DEMO ? "athlete-planner.demo" : "athlete-planner.v1";
@@ -162,6 +162,7 @@ function weekStats(mon) {
       const l = state.log[i.id];
       if (l) { load += l.rpe * (l.dur || i.dur); logged++; if (l.pain) pains.push(l.area); }
     }
+    for (const r of (state.painLog || []).filter(r => r.date === addDays(mon, n))) pains.push(r.area);
   }
   return { planned, load, logged, daysOff, pains, games };
 }
@@ -564,26 +565,36 @@ function viewYear() {
 function screenCalendar() { return ({ day: viewDay, week: viewWeek, month: viewMonth, year: viewYear })[ui.view](); }
 
 // ---------- 9. LOAD ----------
+// Load change = this week's load vs. the average of the 4 weeks before (acute:chronic ratio).
+// > +30% → red warning, > +50% → stronger warning. Negative = lighter week than usual.
 function screenLoad() {
   const mon = ui.loadWeek, st = weekStats(mon), lim = hourLimit(), ratio = acwr(mon);
-  const hoursFlag = lim !== null && st.planned > lim * 60, spikeFlag = ratio !== null && ratio > 1.3, restFlag = st.daysOff < 1, painFlag = st.pains.length > 0;
-  const tile = (label, value, sub, flag, neutral) => `<div class="tile ${flag ? "flag" : ""}"><span class="row between xs muted">${label}${neutral ? "" : ic(flag ? "alert" : "check", `width:16px;height:16px;color:var(--${flag ? "danger" : "green"})`)}</span><span class="v">${value}</span><span class="xs muted">${sub}</span></div>`;
+  const pct = ratio === null ? null : Math.round((ratio - 1) * 100);
+  const hoursFlag = lim !== null && st.planned > lim * 60, spikeFlag = pct !== null && pct > 30, bigSpike = pct !== null && pct > 50;
+  const restFlag = st.daysOff < 1, painFlag = st.pains.length > 0;
+  const tile = (key, label, value, sub, flag, neutral) => `<button class="tile ${flag ? "flag" : ""}" data-a="info" data-v="${key}" style="text-align:left;color:inherit">
+    <span class="row between xs muted">${label}<span class="row" style="gap:4px">${neutral ? "" : ic(flag ? "alert" : "check", `width:16px;height:16px;color:var(--${flag ? "danger" : "green"})`)}<span class="infoi">i</span></span></span>
+    <span class="v ${flag ? "bad" : ""}">${value}</span><span class="xs muted">${sub}</span></button>`;
   const weeks = [5, 4, 3, 2, 1, 0].map(n => { const m = addDays(mon, -7 * n), s = weekStats(m); return { m, v: s.load || 0 }; });
   const max = Math.max(1, ...weeks.map(w => w.v));
   const areas = [...new Set(st.pains.filter(Boolean))].map(a => t("areas")[a] || a).join(", ");
-  const tips = [hoursFlag && t("suggestHours"), spikeFlag && t("suggestSpike"), painFlag && t("suggestPain"), restFlag && t("suggestRest")].filter(Boolean);
+  const red = [spikeFlag && (bigSpike ? t("suggestSpikeBig", { p: pct }) : t("suggestSpike", { p: pct })), painFlag && t("suggestPain"), hoursFlag && t("suggestHours"), restFlag && t("suggestRest")].filter(Boolean);
+  const diary = (state.painLog || []).slice(-3).reverse();
   return `${navLoad(mon)}
+    ${red.length ? `<div class="card flag" style="gap:10px">${red.map(x => `<span class="row small" style="align-items:flex-start;gap:8px">${ic("alert", "color:var(--danger);width:18px;height:18px;margin-top:1px")}<span>${x}</span></span>`).join("")}
+      <button class="btn2" data-a="openWeek" data-k="${mon}">${t("openWeek")}</button></div>`
+      : `<div class="card row" style="flex-direction:row">${ic("check", "color:var(--green)")}<span class="bold">${t("allGood")}</span></div>`}
     <div class="tiles">
-      ${tile(t("hoursWeek"), hm(st.planned), lim !== null ? t("hoursLimit", { n: lim }) : t("hoursNoLimit"), hoursFlag, lim === null)}
-      ${tile(t("spike"), ratio === null ? "—" : ratio.toFixed(1).replace(".", state.lang === "lt" ? "," : ".") + "×", ratio === null ? t("notEnough") : t("spikeSub"), spikeFlag, ratio === null)}
-      ${tile(t("daysOff"), st.daysOff, t("daysOffSub"), restFlag)}
-      ${tile(t("pain"), st.pains.length ? `${areas || "—"} · ${st.pains.length}` : "0", st.pains.length ? "" : t("painNone"), painFlag)}
+      ${tile("change", t("spike"), pct === null ? "—" : (pct > 0 ? "+" : pct < 0 ? "−" : "") + Math.abs(pct) + "%", pct === null ? t("notEnough") : t("spikeSub"), spikeFlag, pct === null)}
+      ${tile("hours", t("hoursWeek"), hm(st.planned), lim !== null ? t("hoursLimit", { n: lim }) : t("hoursNoLimit"), hoursFlag, lim === null)}
+      ${tile("daysoff", t("daysOff"), st.daysOff, t("daysOffSub"), restFlag)}
+      ${tile("pain", t("pain"), st.pains.length ? `${st.pains.length}` : "0", st.pains.length ? areas : t("painNone"), painFlag)}
     </div>
+    <button class="btn2" data-a="openPain" style="border-color:var(--danger);color:var(--danger)">${ic("alert", "width:20px;height:20px")} ${t("reportPain")}</button>
+    ${diary.length ? `<div class="card tight"><span class="label">${t("painDiary")}</span>${diary.map(r => `<span class="small">${fmtShort(r.date)} · ${esc(t("areas")[r.area] || r.area)}${r.side ? " (" + t("sides")[r.side] + ")" : ""} · ${r.level}/10${r.affected ? " · " + t("painAffectedShort") : ""}</span>`).join("")}</div>` : ""}
     <div class="card tight"><span class="row between xs muted"><span class="label">${t("weeklyLoadChart")}</span><span>${t("effortXmin")}</span></span>
       <div class="bars">${weeks.map((w, i) => `<span class="${i === 5 ? "last" : ""} ${i === 5 && spikeFlag ? "flagged" : ""}"><span class="num">${w.v || ""}</span><b style="height:${Math.round(w.v / max * 90)}px"></b><span>${isoWeek(w.m)}</span></span>`).join("")}</div>
       ${st.logged === 0 ? `<span class="xs muted">${t("checkinsHint")}</span>` : ""}</div>
-    ${tips.length ? `<div class="card volt" style="gap:10px">${tips.map(x => `<span class="small">${x}</span>`).join("")}<button class="btn dark" data-a="openWeek" data-k="${mon}">${t("openWeek")}</button></div>`
-      : `<div class="card row" style="flex-direction:row">${ic("check", "color:var(--green)")}<span class="bold">${t("allGood")}</span></div>`}
     <p class="xs muted" style="margin:0;padding:0 4px">${t("disclaimer")}</p>`;
 }
 function navLoad(mon) {
@@ -614,11 +625,16 @@ function screenTests() {
       ${last8.length ? `<div class="bars">${last8.map((j, i) => `<span class="${i === last8.length - 1 ? "last" : ""}"><span class="num">${j.best}</span><b style="height:${Math.max(6, Math.round((j.best - min) / (max - min || 1) * 90))}px"></b><span>${fmtShort(j.date)}</span></span>`).join("")}</div>` : `<span class="small muted">${t("noResults")}</span>`}</div>
     ${warn}
     <p class="xs muted" style="margin:0;padding:0 4px">${t("jumpHow")}</p>
+    ${why(t("jumpWhy"))}
     <div class="card"><div class="row between"><span class="col" style="gap:2px"><span class="bold" style="font-size:15px">${t("heightMonthly")}</span>${change !== null ? `<span class="small muted">${t("heightChange", { c: (change > 0 ? "+" : "") + change })}</span>` : ""}</span>
       <span style="font-family:var(--display);font-weight:700;font-size:24px">${lastH ? lastH.cm + " cm" : "—"}</span></div>
       <div class="row">${`<input class="inp" type="number" inputmode="decimal" min="50" max="250" placeholder="${t("heightCm")}" data-f="heightIn" value="${esc(ui.heightIn)}">`}<button class="btn2" style="width:auto;padding:0 18px" data-a="saveHeight">${t("save")}</button></div>
-      ${change !== null && change >= 2 ? `<span class="small" style="color:var(--volt)">${t("growthNote")}</span>` : ""}</div>`;
+      ${change !== null && change >= 1.8 ? `<span class="row small" style="gap:8px;align-items:flex-start;color:var(--danger)">${ic("alert", "width:18px;height:18px")}<span>${t("growthNote")}</span></span>` : ""}</div>
+    ${why(t("heightWhy"))}
+    <p class="xs muted" style="margin:0;padding:0 4px">${t("testsGeneral")}</p>`;
 }
+
+const why = text => `<details class="card tight"><summary class="bold small" style="cursor:pointer">${t("whyTitle")}</summary><span class="small muted" style="white-space:pre-line">${text}</span></details>`;
 
 // ---------- 11. PROFILE ----------
 function screenProfile() {
@@ -701,6 +717,23 @@ function sheetHtml() {
       <p class="xs muted" style="margin:0">${t("remindersNote")}</p>
       <button class="btn" data-a="exportIcs">${ic("cal")} ${t("addToCal")}</button>
       <button class="btn3" data-a="resetReminders">${t("recommended")}</button>`;
+  }
+  if (s.kind === "info") {
+    body = `<div class="row between"><span class="h2">${t("info_" + s.key + "_t")}</span><button class="icon-btn plain" aria-label="${t("close")}" data-a="closeSheet">${ic("x")}</button></div>
+      <p class="p" style="color:var(--ink);white-space:pre-line">${t("info_" + s.key)}</p>`;
+  }
+  if (s.kind === "pain") {
+    const areas = ["ankle", "foot", "shin", "knee", "thigh", "hip", "back", "shoulder", "elbow", "wrist", "head", "other"];
+    body = `<div class="row between"><span class="h2">${t("reportPain")}</span><button class="icon-btn plain" aria-label="${t("close")}" data-a="closeSheet">${ic("x")}</button></div>
+      <div class="field">${t("painWhere")}<div class="chips">${areas.map(k => `<button class="chip ${f.area === k ? "on white" : ""}" data-a="set" data-p="form.area" data-v="${k}">${t("areas")[k]}</button>`).join("")}</div></div>
+      <div class="field">${t("painSide")}${seg("form.side", [["l", t("sides").l], ["r", t("sides").r], ["b", t("sides").b]], f.side)}</div>
+      <div class="field">${t("painLevel")}<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px">${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => `<button class="chip ${f.level === n ? "on danger" : ""}" data-a="set" data-p="form.level" data-v="${n}" data-t="num">${n}</button>`).join("")}</div>
+        <div class="row between xs muted"><span>${t("painLow")}</span><span>${t("painHigh")}</span></div></div>
+      <div class="row between"><span class="small" style="color:var(--ink)">${t("painAffected")}</span><div style="width:140px">${seg("form.affected", [["false", t("no")], ["true", t("yes")]], String(!!f.affected))}</div></div>
+      ${field(t("note"), input("form.note", f.note, "text", `placeholder="${t("painNotePh")}"`))}
+      <div class="card flag tight"><span class="small bold">${t("seeDoctorTitle")}</span><span class="small muted" style="white-space:pre-line">${t("seeDoctor")}</span></div>
+      ${ui.error ? `<p class="err">${esc(ui.error)}</p>` : ""}
+      <button class="btn" data-a="savePain">${t("save")}</button>`;
   }
   if (s.kind === "privacy") {
     body = `<div class="row between"><span class="h2">${t("privacy")}</span><button class="icon-btn plain" aria-label="${t("close")}" data-a="closeSheet">${ic("x")}</button></div><p class="p" style="color:var(--ink)">${t("privacyFull")}</p>`;
@@ -866,6 +899,13 @@ const actions = {
   },
   editSetup() { ui.screen = "onb"; ui.step = 1; ui.editing = true; scrollTo(0, 0); },
   privacy() { ui.sheet = { kind: "privacy" }; },
+  info(el) { ui.sheet = { kind: "info", key: el.dataset.v }; },
+  openPain() { ui.form = { area: "", side: "", level: 0, affected: false, note: "" }; ui.sheet = { kind: "pain" }; ui.error = ""; },
+  savePain() {
+    const f = ui.form; if (!f.area || !f.level) { ui.error = t("painNeed"); return; }
+    state.painLog = [...(state.painLog || []), { date: todayKey(), area: f.area, side: f.side, level: f.level, affected: !!f.affected, note: (f.note || "").trim() }];
+    ui.sheet = null; ui.error = "";
+  },
   openReminders() { ui.sheet = { kind: "reminders" }; },
   resetReminders() { state.reminders = defaultReminders(); },
   resetAsk() { ui.sheet = { kind: "reset" }; },

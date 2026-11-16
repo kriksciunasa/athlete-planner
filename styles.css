@@ -180,3 +180,8 @@ svg.i { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-widt
 .upload { border: 1px dashed var(--ink-muted); border-radius: 16px; padding: 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .upload input { display: none; }
 .hidden { display: none !important; }
+.infoi { width: 16px; height: 16px; border-radius: 999px; border: 1px solid var(--ink-muted); font-size: 10px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-style: italic; }
+details.card summary { list-style: none; }
+details.card summary::-webkit-details-marker { display: none; }
+details.card summary::after { content: ' +'; color: var(--volt); }
+details[open].card summary::after { content: ' −'; }
