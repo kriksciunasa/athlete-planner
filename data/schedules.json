@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T03:20:49.014Z",
+ "updated": "2026-11-17T03:10:47.038Z",
  "leagues": {
   "RKL": {
    "A divizionas": [
@@ -605,7 +605,7 @@
     },
     {
      "date": "2026-12-22",
-     "time": "19:30",
+     "time": "20:15",
      "home": "Vilniaus „Rytas-MRU“",
      "away": "Vytauto Didžiojo universitetas",
      "venue": "Active Vilnius Arena Ozo g. 14A, Vilnius",
@@ -3873,14 +3873,6 @@
    "U19 vaikinai": [],
    "U18 vaikinai": [
     {
-     "date": "2026-11-16",
-     "time": "18:45",
-     "home": "Panevėžio SC-NTA \"21 amžius\"",
-     "away": "KA \"Žalgiris\" I",
-     "venue": "Panevėžio Beržų sporto salė",
-     "url": "https://mkl.lt/league/603/game/5238775?seasonId=132908"
-    },
-    {
      "date": "2026-11-17",
      "time": "18:30",
      "home": "VKKM I-Neptūnas",
@@ -6256,6 +6248,14 @@
     },
     {
      "date": "2026-11-26",
+     "time": "16:10",
+     "home": "Klaipėdos KM I - UNIQA",
+     "away": "Panevėžio SC",
+     "venue": "Klaipėdos Universitetas",
+     "url": "https://mkl.lt/league/623/game/5237764?seasonId=132903"
+    },
+    {
+     "date": "2026-11-26",
      "time": "16:30",
      "home": "Sostinės KM II - 360 arena",
      "away": "VKKM I-Neptūnas",
@@ -6285,14 +6285,6 @@
      "away": "KM Perkūnas - Vytrita",
      "venue": "Kauno KA \"Žalgiris\"",
      "url": "https://mkl.lt/league/623/game/5237755?seasonId=132903"
-    },
-    {
-     "date": "2026-11-29",
-     "time": "13:00",
-     "home": "Klaipėdos KM I - UNIQA",
-     "away": "Panevėžio SC",
-     "venue": "Klaipėdos Universitetas",
-     "url": "https://mkl.lt/league/623/game/5237764?seasonId=132903"
     },
     {
      "date": "2026-12-01",
@@ -7024,14 +7016,6 @@
     }
    ],
    "U14 vaikinai": [
-    {
-     "date": "2026-11-16",
-     "time": "16:00",
-     "home": "Sostinės KM II - Darmantas",
-     "away": "Sostinės KM I - DS1",
-     "venue": "\"Aerottoria\" arena",
-     "url": "https://mkl.lt/league/633/game/5237604?seasonId=132902"
-    },
     {
      "date": "2026-11-17",
      "time": "17:30",
@@ -8035,20 +8019,20 @@
      "url": "https://mkl.lt/league/643/game/5237073?seasonId=132899"
     },
     {
-     "date": "2026-12-12",
-     "time": "13:30",
-     "home": "Sostinės KM II - Pineca",
-     "away": "Vilniaus KM I - Žalia giria",
-     "venue": "Vilniaus Ž.Augusto p.m.",
-     "url": "https://mkl.lt/league/643/game/5237075?seasonId=132899"
-    },
-    {
      "date": "2026-12-15",
      "time": "17:30",
      "home": "Raseinių KKSC",
      "away": "VKKM I-Neptūnas",
      "venue": "Raseinių KKSC",
      "url": "https://mkl.lt/league/643/game/5237074?seasonId=132899"
+    },
+    {
+     "date": "2026-12-16",
+     "time": "16:30",
+     "home": "Sostinės KM II - Pineca",
+     "away": "Vilniaus KM I - Žalia giria",
+     "venue": "Vilniaus Ž.Augusto p.m.",
+     "url": "https://mkl.lt/league/643/game/5237075?seasonId=132899"
     },
     {
      "date": "2026-12-20",
