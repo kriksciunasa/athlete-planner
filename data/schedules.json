@@ -1,16 +1,8 @@
 {
- "updated": "2026-11-22T03:10:17.505Z",
+ "updated": "2026-11-23T03:19:17.314Z",
  "leagues": {
   "RKL": {
    "A divizionas": [
-    {
-     "date": "2026-11-22",
-     "time": "15:10",
-     "home": "Kauno „Žalgiris-3“",
-     "away": "Vilniaus „Rytas-MRU“",
-     "venue": "KA „Žalgiris“ sporto kompleksas Naglio g. 4E, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2913688/"
-    },
     {
      "date": "2026-11-27",
      "time": "19:00",
@@ -3220,14 +3212,6 @@
    ],
    "B divizionas, D grupė": [
     {
-     "date": "2026-11-22",
-     "time": "11:30",
-     "home": "KA „Žalgiris-Nordclinic“",
-     "away": "Panevėžio sporto centras",
-     "venue": "KA „Žalgiris“ sporto kompleksas Naglio g. 4E, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2907170/"
-    },
-    {
      "date": "2026-11-27",
      "time": "19:00",
      "home": "Klaipėdos Universitetas-KKM",
@@ -3640,14 +3624,6 @@
   "MKL": {
    "U19 vaikinai": [],
    "U18 vaikinai": [
-    {
-     "date": "2026-11-22",
-     "time": "15:00",
-     "home": "Vilniaus KM II",
-     "away": "Kauno KA Snaiperis I",
-     "venue": "Vilniaus KM, NBA salė (1 salė)",
-     "url": "https://mkl.lt/league/603/game/5238773?seasonId=132908"
-    },
     {
      "date": "2026-11-24",
      "time": "17:30",
@@ -6673,14 +6649,6 @@
    ],
    "U14 vaikinai": [
     {
-     "date": "2026-11-22",
-     "time": "11:00",
-     "home": "Nacionalinė KA I",
-     "away": "Sostinės KM II - Darmantas",
-     "venue": "LSU sporto salė",
-     "url": "https://mkl.lt/league/633/game/5237618?seasonId=132902"
-    },
-    {
      "date": "2026-11-24",
      "time": "16:30",
      "home": "VKKM I - Neptūnas",
@@ -7450,30 +7418,6 @@
     }
    ],
    "U13 vaikinai": [
-    {
-     "date": "2026-11-22",
-     "time": "11:00",
-     "home": "Tauragės SC",
-     "away": "Raseinių KKSC",
-     "venue": "Tauragės SC \"Bastilijos\" SK",
-     "url": "https://mkl.lt/league/643/game/5237046?seasonId=132899"
-    },
-    {
-     "date": "2026-11-22",
-     "time": "13:00",
-     "home": "Vilniaus KM I - Žalia giria",
-     "away": "Tornado KM I – Fudo",
-     "venue": "Vilniaus KM, NBA salė (1 salė)",
-     "url": "https://mkl.lt/league/643/game/5237044?seasonId=132899"
-    },
-    {
-     "date": "2026-11-22",
-     "time": "15:30",
-     "home": "Kauno KA Snaiperis I",
-     "away": "VKKM I-Neptūnas",
-     "venue": "LIK sporto salė",
-     "url": "https://mkl.lt/league/643/game/5237042?seasonId=132899"
-    },
     {
      "date": "2026-11-24",
      "time": "17:30",
