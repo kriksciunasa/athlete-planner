@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T03:13:52.554Z",
+ "updated": "2026-11-25T03:22:38.297Z",
  "leagues": {
   "RKL": {
    "A divizionas": [
@@ -150,18 +150,18 @@
     {
      "date": "2026-12-04",
      "time": "19:00",
-     "home": "BC „Sendvaris“",
-     "away": "Vytauto Didžiojo universitetas",
-     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
-     "url": "https://www.rkl.lt/rungtynes/2913706/"
-    },
-    {
-     "date": "2026-12-04",
-     "time": "19:00",
      "home": "Birštono „Milasta“",
      "away": "LCC Tarptautinis Universitetas",
      "venue": "Birštono sporto ir sveikatingumo centras Kęstučio g. 14, Birštonas",
      "url": "https://www.rkl.lt/rungtynes/2913704/"
+    },
+    {
+     "date": "2026-12-04",
+     "time": "19:00",
+     "home": "BC „Sendvaris“",
+     "away": "Vytauto Didžiojo universitetas",
+     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
+     "url": "https://www.rkl.lt/rungtynes/2913706/"
     },
     {
      "date": "2026-12-04",
@@ -174,18 +174,18 @@
     {
      "date": "2026-12-04",
      "time": "19:30",
-     "home": "Vilniaus „Rytas-MRU“",
-     "away": "Kazlų Rūdos SC „Ataka-Danilus“",
-     "venue": "Active Vilnius Arena Ozo g. 14A, Vilnius",
-     "url": "https://www.rkl.lt/rungtynes/2913708/"
-    },
-    {
-     "date": "2026-12-04",
-     "time": "19:30",
      "home": "BC „Širvintos-UHB Group“",
      "away": "Raseinių „Raseiniai“",
      "venue": "Širvintų sporto centras Kalnalaukio g. 41, Širvintos",
      "url": "https://www.rkl.lt/rungtynes/2913712/"
+    },
+    {
+     "date": "2026-12-04",
+     "time": "19:30",
+     "home": "Vilniaus „Rytas-MRU“",
+     "away": "Kazlų Rūdos SC „Ataka-Danilus“",
+     "venue": "Active Vilnius Arena Ozo g. 14A, Vilnius",
+     "url": "https://www.rkl.lt/rungtynes/2913708/"
     },
     {
      "date": "2026-12-04",
@@ -238,6 +238,14 @@
     {
      "date": "2026-12-11",
      "time": "19:00",
+     "home": "Prienų „Tikodenta“",
+     "away": "BC „Sendvaris“",
+     "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
+     "url": "https://www.rkl.lt/rungtynes/2913719/"
+    },
+    {
+     "date": "2026-12-11",
+     "time": "19:00",
      "home": "Vytauto Didžiojo universitetas",
      "away": "Kauno „Žalgiris-3“",
      "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
@@ -270,26 +278,10 @@
     {
      "date": "2026-12-11",
      "time": "19:00",
-     "home": "Prienų „Tikodenta“",
-     "away": "BC „Sendvaris“",
-     "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
-     "url": "https://www.rkl.lt/rungtynes/2913719/"
-    },
-    {
-     "date": "2026-12-11",
-     "time": "19:00",
      "home": "Joniškio „Delikatesas“",
      "away": "BC „Biržai“",
      "venue": "Joniškio „Saulės“ pagrindinė mokykla Livonijos g. 6, Joniškis",
      "url": "https://www.rkl.lt/rungtynes/2913727/"
-    },
-    {
-     "date": "2026-12-11",
-     "time": "19:30",
-     "home": "Vilniaus „Rytas-MRU“",
-     "away": "Druskininkų „Akvilė“",
-     "venue": "Active Vilnius Arena Ozo g. 14A, Vilnius",
-     "url": "https://www.rkl.lt/rungtynes/2913722/"
     },
     {
      "date": "2026-12-11",
@@ -301,19 +293,19 @@
     },
     {
      "date": "2026-12-11",
+     "time": "19:30",
+     "home": "Vilniaus „Rytas-MRU“",
+     "away": "Druskininkų „Akvilė“",
+     "venue": "Active Vilnius Arena Ozo g. 14A, Vilnius",
+     "url": "https://www.rkl.lt/rungtynes/2913722/"
+    },
+    {
+     "date": "2026-12-11",
      "time": "20:00",
      "home": "Akmenės raj. sporto centras",
      "away": "Kazlų Rūdos SC „Ataka-Danilus“",
      "venue": "",
      "url": "https://www.rkl.lt/rungtynes/2913729/"
-    },
-    {
-     "date": "2026-12-12",
-     "time": "14:00",
-     "home": "BC „Sendvaris“",
-     "away": "Birštono „Milasta“",
-     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
-     "url": "https://www.rkl.lt/rungtynes/2913731/"
     },
     {
      "date": "2026-12-12",
@@ -341,6 +333,30 @@
     },
     {
      "date": "2026-12-12",
+     "time": "14:00",
+     "home": "BC „Sendvaris“",
+     "away": "Birštono „Milasta“",
+     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
+     "url": "https://www.rkl.lt/rungtynes/2913731/"
+    },
+    {
+     "date": "2026-12-12",
+     "time": "15:00",
+     "home": "LCC Tarptautinis Universitetas",
+     "away": "Šilalės „Lūšis“",
+     "venue": "Michealsen Centras Kretingos g. 36, Klaipėda",
+     "url": "https://www.rkl.lt/rungtynes/2913733/"
+    },
+    {
+     "date": "2026-12-12",
+     "time": "15:00",
+     "home": "Raseinių „Raseiniai“",
+     "away": "Vilniaus „Rytas-MRU“",
+     "venue": "Karpynės sporto arena Karpynės g. 2, Gabšių k., Raseinių raj.",
+     "url": "https://www.rkl.lt/rungtynes/2913741/"
+    },
+    {
+     "date": "2026-12-12",
      "time": "15:00",
      "home": "Kazlų Rūdos SC „Ataka-Danilus“",
      "away": "KK „TransINVEST-VRSC“",
@@ -358,34 +374,26 @@
     {
      "date": "2026-12-12",
      "time": "15:00",
-     "home": "LCC Tarptautinis Universitetas",
-     "away": "Šilalės „Lūšis“",
-     "venue": "Michealsen Centras Kretingos g. 36, Klaipėda",
-     "url": "https://www.rkl.lt/rungtynes/2913733/"
-    },
-    {
-     "date": "2026-12-12",
-     "time": "15:00",
      "home": "Prienų „Tikodenta“",
      "away": "Vytauto Didžiojo universitetas",
      "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
      "url": "https://www.rkl.lt/rungtynes/2913735/"
     },
     {
-     "date": "2026-12-12",
-     "time": "15:00",
-     "home": "Raseinių „Raseiniai“",
-     "away": "Vilniaus „Rytas-MRU“",
-     "venue": "Karpynės sporto arena Karpynės g. 2, Gabšių k., Raseinių raj.",
-     "url": "https://www.rkl.lt/rungtynes/2913741/"
+     "date": "2026-12-18",
+     "time": "18:00",
+     "home": "KK „TransINVEST-VRSC“",
+     "away": "LCC Tarptautinis Universitetas",
+     "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
+     "url": "https://www.rkl.lt/rungtynes/2913734/"
     },
     {
      "date": "2026-12-18",
      "time": "19:00",
-     "home": "BC „Sendvaris“",
-     "away": "KK „Trakai-GEALAN“",
-     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
-     "url": "https://www.rkl.lt/rungtynes/2913732/"
+     "home": "Kauno „Žalgiris-3“",
+     "away": "Prienų „Tikodenta“",
+     "venue": "KA „Žalgiris“ sporto kompleksas Naglio g. 4E, Kaunas",
+     "url": "https://www.rkl.lt/rungtynes/2913728/"
     },
     {
      "date": "2026-12-18",
@@ -406,26 +414,18 @@
     {
      "date": "2026-12-18",
      "time": "19:00",
-     "home": "Kauno „Žalgiris-3“",
-     "away": "Prienų „Tikodenta“",
-     "venue": "KA „Žalgiris“ sporto kompleksas Naglio g. 4E, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2913728/"
-    },
-    {
-     "date": "2026-12-18",
-     "time": "19:00",
-     "home": "KK „TransINVEST-VRSC“",
-     "away": "LCC Tarptautinis Universitetas",
-     "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
-     "url": "https://www.rkl.lt/rungtynes/2913734/"
-    },
-    {
-     "date": "2026-12-18",
-     "time": "19:00",
      "home": "Joniškio „Delikatesas“",
      "away": "Raseinių „Raseiniai“",
      "venue": "Joniškio „Saulės“ pagrindinė mokykla Livonijos g. 6, Joniškis",
      "url": "https://www.rkl.lt/rungtynes/2913743/"
+    },
+    {
+     "date": "2026-12-18",
+     "time": "19:00",
+     "home": "BC „Sendvaris“",
+     "away": "KK „Trakai-GEALAN“",
+     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
+     "url": "https://www.rkl.lt/rungtynes/2913732/"
     },
     {
      "date": "2026-12-18",
@@ -446,18 +446,18 @@
     {
      "date": "2026-12-19",
      "time": "14:00",
-     "home": "Kauno „Žalgiris-3“",
-     "away": "BC „Sendvaris“",
-     "venue": "KA „Žalgiris“ sporto kompleksas Naglio g. 4E, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2913746/"
-    },
-    {
-     "date": "2026-12-19",
-     "time": "14:00",
      "home": "KK „Trakai-GEALAN“",
      "away": "Vytauto Didžiojo universitetas",
      "venue": "Trakų sporto centras Birutės g. 44, Trakai",
      "url": "https://www.rkl.lt/rungtynes/2913748/"
+    },
+    {
+     "date": "2026-12-19",
+     "time": "14:00",
+     "home": "Kauno „Žalgiris-3“",
+     "away": "BC „Sendvaris“",
+     "venue": "KA „Žalgiris“ sporto kompleksas Naglio g. 4E, Kaunas",
+     "url": "https://www.rkl.lt/rungtynes/2913746/"
     },
     {
      "date": "2026-12-19",
@@ -478,10 +478,10 @@
     {
      "date": "2026-12-19",
      "time": "15:00",
-     "home": "BC „Biržai“",
-     "away": "KK „Kupiškis“",
-     "venue": "Biržų sporto centras Karaimų g. 5, Biržai",
-     "url": "https://www.rkl.lt/rungtynes/2913750/"
+     "home": "Raseinių „Raseiniai“",
+     "away": "Akmenės raj. sporto centras",
+     "venue": "Karpynės sporto arena Karpynės g. 2, Gabšių k., Raseinių raj.",
+     "url": "https://www.rkl.lt/rungtynes/2913751/"
     },
     {
      "date": "2026-12-19",
@@ -494,10 +494,10 @@
     {
      "date": "2026-12-19",
      "time": "15:00",
-     "home": "Raseinių „Raseiniai“",
-     "away": "Akmenės raj. sporto centras",
-     "venue": "Karpynės sporto arena Karpynės g. 2, Gabšių k., Raseinių raj.",
-     "url": "https://www.rkl.lt/rungtynes/2913751/"
+     "home": "BC „Biržai“",
+     "away": "KK „Kupiškis“",
+     "venue": "Biržų sporto centras Karaimų g. 5, Biržai",
+     "url": "https://www.rkl.lt/rungtynes/2913750/"
     },
     {
      "date": "2026-12-22",
@@ -522,6 +522,14 @@
      "away": "KK „Trakai-GEALAN“",
      "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
      "url": "https://www.rkl.lt/rungtynes/2913757/"
+    },
+    {
+     "date": "2027-01-08",
+     "time": "19:00",
+     "home": "KK „TransINVEST-VRSC“",
+     "away": "Šilalės „Lūšis“",
+     "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
+     "url": "https://www.rkl.lt/rungtynes/2913759/"
     },
     {
      "date": "2027-01-08",
@@ -554,14 +562,6 @@
      "away": "Raseinių „Raseiniai“",
      "venue": "Kupiškio Lauryno Stuokos-Gucevičiaus gimnazija Vytauto g. 21, Kupiškis",
      "url": "https://www.rkl.lt/rungtynes/2913769/"
-    },
-    {
-     "date": "2027-01-08",
-     "time": "19:00",
-     "home": "KK „TransINVEST-VRSC“",
-     "away": "Šilalės „Lūšis“",
-     "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
-     "url": "https://www.rkl.lt/rungtynes/2913759/"
     },
     {
      "date": "2027-01-08",
@@ -710,6 +710,14 @@
     {
      "date": "2027-01-16",
      "time": "14:00",
+     "home": "Joniškio „Delikatesas“",
+     "away": "Šilalės „Lūšis“",
+     "venue": "Joniškio „Saulės“ pagrindinė mokykla Livonijos g. 6, Joniškis",
+     "url": "https://www.rkl.lt/rungtynes/2913784/"
+    },
+    {
+     "date": "2027-01-16",
+     "time": "14:00",
      "home": "BC „Sendvaris“",
      "away": "Raseinių „Raseiniai“",
      "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
@@ -722,14 +730,6 @@
      "away": "Vytauto Didžiojo universitetas",
      "venue": "Druskininkų sporto centras M.K.Čiurlionio g. 97-2, Druskininkai",
      "url": "https://www.rkl.lt/rungtynes/2913790/"
-    },
-    {
-     "date": "2027-01-16",
-     "time": "14:00",
-     "home": "Joniškio „Delikatesas“",
-     "away": "Šilalės „Lūšis“",
-     "venue": "Joniškio „Saulės“ pagrindinė mokykla Livonijos g. 6, Joniškis",
-     "url": "https://www.rkl.lt/rungtynes/2913784/"
     },
     {
      "date": "2027-01-16",
@@ -838,18 +838,18 @@
     {
      "date": "2027-01-23",
      "time": "14:00",
-     "home": "BC „Sendvaris“",
-     "away": "LCC Tarptautinis Universitetas",
-     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
-     "url": "https://www.rkl.lt/rungtynes/2913803/"
-    },
-    {
-     "date": "2027-01-23",
-     "time": "14:00",
      "home": "Vytauto Didžiojo universitetas",
      "away": "Šilalės „Lūšis“",
      "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
      "url": "https://www.rkl.lt/rungtynes/2913801/"
+    },
+    {
+     "date": "2027-01-23",
+     "time": "14:00",
+     "home": "BC „Sendvaris“",
+     "away": "LCC Tarptautinis Universitetas",
+     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
+     "url": "https://www.rkl.lt/rungtynes/2913803/"
     },
     {
      "date": "2027-01-23",
@@ -942,18 +942,26 @@
     {
      "date": "2027-01-30",
      "time": "15:00",
+     "home": "LCC Tarptautinis Universitetas",
+     "away": "Prienų „Tikodenta“",
+     "venue": "Michealsen Centras Kretingos g. 36, Klaipėda",
+     "url": "https://www.rkl.lt/rungtynes/2913800/"
+    },
+    {
+     "date": "2027-01-30",
+     "time": "15:00",
      "home": "Šilalės „Lūšis“",
      "away": "BC „Sendvaris“",
      "venue": "Šilalės sporto ir laisvalaikio centras Kovo 11-osios g. 15, Šilalė",
      "url": "https://www.rkl.lt/rungtynes/2913802/"
     },
     {
-     "date": "2027-01-30",
-     "time": "15:00",
-     "home": "LCC Tarptautinis Universitetas",
-     "away": "Prienų „Tikodenta“",
-     "venue": "Michealsen Centras Kretingos g. 36, Klaipėda",
-     "url": "https://www.rkl.lt/rungtynes/2913800/"
+     "date": "2027-02-05",
+     "time": "19:00",
+     "home": "Birštono „Milasta“",
+     "away": "Kazlų Rūdos SC „Ataka-Danilus“",
+     "venue": "Birštono sporto ir sveikatingumo centras Kęstučio g. 14, Birštonas",
+     "url": "https://www.rkl.lt/rungtynes/2913804/"
     },
     {
      "date": "2027-02-05",
@@ -982,6 +990,14 @@
     {
      "date": "2027-02-05",
      "time": "19:00",
+     "home": "KK „Trakai-GEALAN“",
+     "away": "Druskininkų „Akvilė“",
+     "venue": "Trakų sporto centras Birutės g. 44, Trakai",
+     "url": "https://www.rkl.lt/rungtynes/2913812/"
+    },
+    {
+     "date": "2027-02-05",
+     "time": "19:00",
      "home": "Joniškio „Delikatesas“",
      "away": "Akmenės raj. sporto centras",
      "venue": "Joniškio „Saulės“ pagrindinė mokykla Livonijos g. 6, Joniškis",
@@ -1002,22 +1018,6 @@
      "away": "Prienų „Tikodenta“",
      "venue": "Šilalės sporto ir laisvalaikio centras Kovo 11-osios g. 15, Šilalė",
      "url": "https://www.rkl.lt/rungtynes/2913820/"
-    },
-    {
-     "date": "2027-02-05",
-     "time": "19:00",
-     "home": "Birštono „Milasta“",
-     "away": "Kazlų Rūdos SC „Ataka-Danilus“",
-     "venue": "Birštono sporto ir sveikatingumo centras Kęstučio g. 14, Birštonas",
-     "url": "https://www.rkl.lt/rungtynes/2913804/"
-    },
-    {
-     "date": "2027-02-05",
-     "time": "19:00",
-     "home": "KK „Trakai-GEALAN“",
-     "away": "Druskininkų „Akvilė“",
-     "venue": "Trakų sporto centras Birutės g. 44, Trakai",
-     "url": "https://www.rkl.lt/rungtynes/2913812/"
     },
     {
      "date": "2027-02-05",
@@ -1070,6 +1070,14 @@
     {
      "date": "2027-02-06",
      "time": "15:00",
+     "home": "Prienų „Tikodenta“",
+     "away": "Vilniaus „Rytas-MRU“",
+     "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
+     "url": "https://www.rkl.lt/rungtynes/2913815/"
+    },
+    {
+     "date": "2027-02-06",
+     "time": "15:00",
      "home": "Raseinių „Raseiniai“",
      "away": "Birštono „Milasta“",
      "venue": "Karpynės sporto arena Karpynės g. 2, Gabšių k., Raseinių raj.",
@@ -1092,12 +1100,12 @@
      "url": "https://www.rkl.lt/rungtynes/2913830/"
     },
     {
-     "date": "2027-02-06",
-     "time": "15:00",
-     "home": "Prienų „Tikodenta“",
-     "away": "Vilniaus „Rytas-MRU“",
-     "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
-     "url": "https://www.rkl.lt/rungtynes/2913815/"
+     "date": "2027-02-12",
+     "time": "19:00",
+     "home": "Birštono „Milasta“",
+     "away": "Joniškio „Delikatesas“",
+     "venue": "Birštono sporto ir sveikatingumo centras Kęstučio g. 14, Birštonas",
+     "url": "https://www.rkl.lt/rungtynes/2913819/"
     },
     {
      "date": "2027-02-12",
@@ -1114,14 +1122,6 @@
      "away": "Vytauto Didžiojo universitetas",
      "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
      "url": "https://www.rkl.lt/rungtynes/2913827/"
-    },
-    {
-     "date": "2027-02-12",
-     "time": "19:00",
-     "home": "Birštono „Milasta“",
-     "away": "Joniškio „Delikatesas“",
-     "venue": "Birštono sporto ir sveikatingumo centras Kęstučio g. 14, Birštonas",
-     "url": "https://www.rkl.lt/rungtynes/2913819/"
     },
     {
      "date": "2027-02-12",
@@ -1222,18 +1222,18 @@
     {
      "date": "2027-02-19",
      "time": "19:30",
-     "home": "Kazlų Rūdos SC „Ataka-Danilus“",
-     "away": "LCC Tarptautinis Universitetas",
-     "venue": "Kazlų Rūdos sporto centras S. Daukanto g. 18, Kazlų Rūda",
-     "url": "https://www.rkl.lt/rungtynes/2913845/"
-    },
-    {
-     "date": "2027-02-19",
-     "time": "19:30",
      "home": "BC „Širvintos-UHB Group“",
      "away": "KK „Trakai-GEALAN“",
      "venue": "Širvintų sporto centras Kalnalaukio g. 41, Širvintos",
      "url": "https://www.rkl.lt/rungtynes/2913842/"
+    },
+    {
+     "date": "2027-02-19",
+     "time": "19:30",
+     "home": "Kazlų Rūdos SC „Ataka-Danilus“",
+     "away": "LCC Tarptautinis Universitetas",
+     "venue": "Kazlų Rūdos sporto centras S. Daukanto g. 18, Kazlų Rūda",
+     "url": "https://www.rkl.lt/rungtynes/2913845/"
     },
     {
      "date": "2027-02-19",
@@ -1242,6 +1242,22 @@
      "away": "BC „Sendvaris“",
      "venue": "",
      "url": "https://www.rkl.lt/rungtynes/2913848/"
+    },
+    {
+     "date": "2027-02-20",
+     "time": "14:00",
+     "home": "Druskininkų „Akvilė“",
+     "away": "Birštono „Milasta“",
+     "venue": "Druskininkų sporto centras M.K.Čiurlionio g. 97-2, Druskininkai",
+     "url": "https://www.rkl.lt/rungtynes/2913837/"
+    },
+    {
+     "date": "2027-02-20",
+     "time": "14:00",
+     "home": "Vytauto Didžiojo universitetas",
+     "away": "KK „Kupiškis“",
+     "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
+     "url": "https://www.rkl.lt/rungtynes/2913840/"
     },
     {
      "date": "2027-02-20",
@@ -1261,19 +1277,11 @@
     },
     {
      "date": "2027-02-20",
-     "time": "14:00",
-     "home": "Druskininkų „Akvilė“",
-     "away": "Birštono „Milasta“",
-     "venue": "Druskininkų sporto centras M.K.Čiurlionio g. 97-2, Druskininkai",
-     "url": "https://www.rkl.lt/rungtynes/2913837/"
-    },
-    {
-     "date": "2027-02-20",
-     "time": "14:00",
-     "home": "Vytauto Didžiojo universitetas",
-     "away": "KK „Kupiškis“",
-     "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
-     "url": "https://www.rkl.lt/rungtynes/2913840/"
+     "time": "15:00",
+     "home": "Raseinių „Raseiniai“",
+     "away": "LCC Tarptautinis Universitetas",
+     "venue": "Karpynės sporto arena Karpynės g. 2, Gabšių k., Raseinių raj.",
+     "url": "https://www.rkl.lt/rungtynes/2913841/"
     },
     {
      "date": "2027-02-20",
@@ -1300,12 +1308,12 @@
      "url": "https://www.rkl.lt/rungtynes/2913849/"
     },
     {
-     "date": "2027-02-20",
-     "time": "15:00",
-     "home": "Raseinių „Raseiniai“",
-     "away": "LCC Tarptautinis Universitetas",
-     "venue": "Karpynės sporto arena Karpynės g. 2, Gabšių k., Raseinių raj.",
-     "url": "https://www.rkl.lt/rungtynes/2913841/"
+     "date": "2027-02-26",
+     "time": "19:00",
+     "home": "KK „TransINVEST-VRSC“",
+     "away": "KK „Trakai-GEALAN“",
+     "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
+     "url": "https://www.rkl.lt/rungtynes/2913856/"
     },
     {
      "date": "2027-02-26",
@@ -1314,14 +1322,6 @@
      "away": "BC „Sendvaris“",
      "venue": "Kupiškio Lauryno Stuokos-Gucevičiaus gimnazija Vytauto g. 21, Kupiškis",
      "url": "https://www.rkl.lt/rungtynes/2913858/"
-    },
-    {
-     "date": "2027-02-26",
-     "time": "19:00",
-     "home": "KK „TransINVEST-VRSC“",
-     "away": "KK „Trakai-GEALAN“",
-     "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
-     "url": "https://www.rkl.lt/rungtynes/2913856/"
     },
     {
      "date": "2027-02-26",
@@ -1350,18 +1350,18 @@
     {
      "date": "2027-02-27",
      "time": "14:00",
-     "home": "Vilniaus „Rytas-MRU“",
-     "away": "BC „Biržai“",
-     "venue": "Active Vilnius Arena Ozo g. 14A, Vilnius",
-     "url": "https://www.rkl.lt/rungtynes/2913869/"
-    },
-    {
-     "date": "2027-02-27",
-     "time": "14:00",
      "home": "Joniškio „Delikatesas“",
      "away": "Prienų „Tikodenta“",
      "venue": "Joniškio „Saulės“ pagrindinė mokykla Livonijos g. 6, Joniškis",
      "url": "https://www.rkl.lt/rungtynes/2913864/"
+    },
+    {
+     "date": "2027-02-27",
+     "time": "14:00",
+     "home": "Vilniaus „Rytas-MRU“",
+     "away": "BC „Biržai“",
+     "venue": "Active Vilnius Arena Ozo g. 14A, Vilnius",
+     "url": "https://www.rkl.lt/rungtynes/2913869/"
     },
     {
      "date": "2027-02-27",
@@ -1430,14 +1430,6 @@
     {
      "date": "2027-03-05",
      "time": "19:00",
-     "home": "Prienų „Tikodenta“",
-     "away": "KK „Kupiškis“",
-     "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
-     "url": "https://www.rkl.lt/rungtynes/2913868/"
-    },
-    {
-     "date": "2027-03-05",
-     "time": "19:00",
      "home": "KK „Trakai-GEALAN“",
      "away": "Akmenės raj. sporto centras",
      "venue": "Trakų sporto centras Birutės g. 44, Trakai",
@@ -1445,11 +1437,11 @@
     },
     {
      "date": "2027-03-05",
-     "time": "19:30",
-     "home": "Druskininkų „Akvilė“",
-     "away": "Šilalės „Lūšis“",
-     "venue": "Druskininkų sporto centras M.K.Čiurlionio g. 97-2, Druskininkai",
-     "url": "https://www.rkl.lt/rungtynes/2913865/"
+     "time": "19:00",
+     "home": "Prienų „Tikodenta“",
+     "away": "KK „Kupiškis“",
+     "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
+     "url": "https://www.rkl.lt/rungtynes/2913868/"
     },
     {
      "date": "2027-03-05",
@@ -1458,6 +1450,14 @@
      "away": "Vilniaus „Rytas-MRU“",
      "venue": "Kazlų Rūdos sporto centras S. Daukanto g. 18, Kazlų Rūda",
      "url": "https://www.rkl.lt/rungtynes/2913862/"
+    },
+    {
+     "date": "2027-03-05",
+     "time": "19:30",
+     "home": "Druskininkų „Akvilė“",
+     "away": "Šilalės „Lūšis“",
+     "venue": "Druskininkų sporto centras M.K.Čiurlionio g. 97-2, Druskininkai",
+     "url": "https://www.rkl.lt/rungtynes/2913865/"
     },
     {
      "date": "2027-03-06",
@@ -1502,6 +1502,14 @@
     {
      "date": "2027-03-06",
      "time": "15:00",
+     "home": "LCC Tarptautinis Universitetas",
+     "away": "BC „Širvintos-UHB Group“",
+     "venue": "Michealsen Centras Kretingos g. 36, Klaipėda",
+     "url": "https://www.rkl.lt/rungtynes/2913876/"
+    },
+    {
+     "date": "2027-03-06",
+     "time": "15:00",
      "home": "Raseinių „Raseiniai“",
      "away": "KK „TransINVEST-VRSC“",
      "venue": "Karpynės sporto arena Karpynės g. 2, Gabšių k., Raseinių raj.",
@@ -1514,14 +1522,6 @@
      "away": "Joniškio „Delikatesas“",
      "venue": "Biržų sporto centras Karaimų g. 5, Biržai",
      "url": "https://www.rkl.lt/rungtynes/2913893/"
-    },
-    {
-     "date": "2027-03-06",
-     "time": "15:00",
-     "home": "LCC Tarptautinis Universitetas",
-     "away": "BC „Širvintos-UHB Group“",
-     "venue": "Michealsen Centras Kretingos g. 36, Klaipėda",
-     "url": "https://www.rkl.lt/rungtynes/2913876/"
     },
     {
      "date": "2027-03-06",
@@ -1622,10 +1622,10 @@
     {
      "date": "2027-03-19",
      "time": "19:00",
-     "home": "BC „Biržai“",
-     "away": "Vytauto Didžiojo universitetas",
-     "venue": "Biržų sporto centras Karaimų g. 5, Biržai",
-     "url": "https://www.rkl.lt/rungtynes/2913880/"
+     "home": "LCC Tarptautinis Universitetas",
+     "away": "KK „TransINVEST-VRSC“",
+     "venue": "Michealsen Centras Kretingos g. 36, Klaipėda",
+     "url": "https://www.rkl.lt/rungtynes/2913879/"
     },
     {
      "date": "2027-03-19",
@@ -1646,10 +1646,10 @@
     {
      "date": "2027-03-19",
      "time": "19:00",
-     "home": "LCC Tarptautinis Universitetas",
-     "away": "KK „TransINVEST-VRSC“",
-     "venue": "Michealsen Centras Kretingos g. 36, Klaipėda",
-     "url": "https://www.rkl.lt/rungtynes/2913879/"
+     "home": "BC „Biržai“",
+     "away": "Vytauto Didžiojo universitetas",
+     "venue": "Biržų sporto centras Karaimų g. 5, Biržai",
+     "url": "https://www.rkl.lt/rungtynes/2913880/"
     },
     {
      "date": "2027-03-19",
@@ -1674,6 +1674,22 @@
      "away": "Birštono „Milasta“",
      "venue": "Prienų sporto ir laisvalaikio centras Pramonės g. 20, Prienai",
      "url": "https://www.rkl.lt/rungtynes/2913889/"
+    },
+    {
+     "date": "2027-03-20",
+     "time": "15:00",
+     "home": "BC „Širvintos-UHB Group“",
+     "away": "Šilalės „Lūšis“",
+     "venue": "Širvintų sporto centras Kalnalaukio g. 41, Širvintos",
+     "url": "https://www.rkl.lt/rungtynes/2913892/"
+    },
+    {
+     "date": "2027-03-20",
+     "time": "15:00",
+     "home": "BC „Sendvaris“",
+     "away": "Kauno „Žalgiris-3“",
+     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
+     "url": "https://www.rkl.lt/rungtynes/2913895/"
     },
     {
      "date": "2027-03-20",
@@ -1722,22 +1738,6 @@
      "away": "Kazlų Rūdos SC „Ataka-Danilus“",
      "venue": "Joniškio „Saulės“ pagrindinė mokykla Livonijos g. 6, Joniškis",
      "url": "https://www.rkl.lt/rungtynes/2913906/"
-    },
-    {
-     "date": "2027-03-20",
-     "time": "15:00",
-     "home": "BC „Širvintos-UHB Group“",
-     "away": "Šilalės „Lūšis“",
-     "venue": "Širvintų sporto centras Kalnalaukio g. 41, Širvintos",
-     "url": "https://www.rkl.lt/rungtynes/2913892/"
-    },
-    {
-     "date": "2027-03-20",
-     "time": "15:00",
-     "home": "BC „Sendvaris“",
-     "away": "Kauno „Žalgiris-3“",
-     "venue": "Klaipėdos r. Sendvario „Saulės” mokykla Agilos g. 12, Trušeliai",
-     "url": "https://www.rkl.lt/rungtynes/2913895/"
     }
    ],
    "B divizionas, A grupė": [
@@ -1968,18 +1968,18 @@
     {
      "date": "2027-01-16",
      "time": "14:00",
-     "home": "Rokiškio „JVN“",
-     "away": "Vilniaus KM",
-     "venue": "Rokiškio arena Taikos g. 21A, Rokiškis",
-     "url": "https://www.rkl.lt/rungtynes/2906914/"
-    },
-    {
-     "date": "2027-01-16",
-     "time": "14:00",
      "home": "TransINVEST 2 – VRSC",
      "away": "Molėtų SC-„Sanit“",
      "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
      "url": "https://www.rkl.lt/rungtynes/2906916/"
+    },
+    {
+     "date": "2027-01-16",
+     "time": "14:00",
+     "home": "Rokiškio „JVN“",
+     "away": "Vilniaus KM",
+     "venue": "Rokiškio arena Taikos g. 21A, Rokiškis",
+     "url": "https://www.rkl.lt/rungtynes/2906914/"
     },
     {
      "date": "2027-01-16",
@@ -1992,18 +1992,18 @@
     {
      "date": "2027-01-22",
      "time": "19:00",
-     "home": "LKSK „Gijos klinikos“",
-     "away": "Molėtų SC-„Sanit“",
-     "venue": "Kauno krepšinio akademija „Žalgiris“ Pašilės g. 41, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2906918/"
-    },
-    {
-     "date": "2027-01-22",
-     "time": "19:00",
      "home": "Švenčionėlių „Rida“",
      "away": "Vilniaus KM",
      "venue": "Švenčionėlių Karaliaus Mindaugo gimnazija Mokyklos g. 24, Švenčionėliai",
      "url": "https://www.rkl.lt/rungtynes/2906922/"
+    },
+    {
+     "date": "2027-01-22",
+     "time": "19:00",
+     "home": "LKSK „Gijos klinikos“",
+     "away": "Molėtų SC-„Sanit“",
+     "venue": "Kauno krepšinio akademija „Žalgiris“ Pašilės g. 41, Kaunas",
+     "url": "https://www.rkl.lt/rungtynes/2906918/"
     },
     {
      "date": "2027-01-22",
@@ -2096,18 +2096,18 @@
     {
      "date": "2027-02-06",
      "time": "14:00",
-     "home": "TransINVEST 2 – VRSC",
-     "away": "Švenčionėlių „Rida“",
-     "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
-     "url": "https://www.rkl.lt/rungtynes/2906924/"
-    },
-    {
-     "date": "2027-02-06",
-     "time": "14:00",
      "home": "Molėtų SC-„Sanit“",
      "away": "Rokiškio „JVN“",
      "venue": "Molėtų sporto centras Ąžuolų g. 10, Molėtai",
      "url": "https://www.rkl.lt/rungtynes/2906927/"
+    },
+    {
+     "date": "2027-02-06",
+     "time": "14:00",
+     "home": "TransINVEST 2 – VRSC",
+     "away": "Švenčionėlių „Rida“",
+     "venue": "Skaidiškių sporto kompleksas Šv. Faustinos g. 1C, Skaidiškės, Vilniaus raj.",
+     "url": "https://www.rkl.lt/rungtynes/2906924/"
     },
     {
      "date": "2027-02-12",
@@ -2248,18 +2248,18 @@
     {
      "date": "2027-03-06",
      "time": "14:00",
-     "home": "Rokiškio „JVN“",
-     "away": "LKSK „Gijos klinikos“",
-     "venue": "Rokiškio arena Taikos g. 21A, Rokiškis",
-     "url": "https://www.rkl.lt/rungtynes/2906941/"
-    },
-    {
-     "date": "2027-03-06",
-     "time": "14:00",
      "home": "Molėtų SC-„Sanit“",
      "away": "Švenčionėlių „Rida“",
      "venue": "Molėtų sporto centras Ąžuolų g. 10, Molėtai",
      "url": "https://www.rkl.lt/rungtynes/2906943/"
+    },
+    {
+     "date": "2027-03-06",
+     "time": "14:00",
+     "home": "Rokiškio „JVN“",
+     "away": "LKSK „Gijos klinikos“",
+     "venue": "Rokiškio arena Taikos g. 21A, Rokiškis",
+     "url": "https://www.rkl.lt/rungtynes/2906941/"
     },
     {
      "date": "2027-03-06",
@@ -2385,7 +2385,7 @@
     },
     {
      "date": "2026-12-12",
-     "time": "14:00",
+     "time": "15:00",
      "home": "Vytauto Didžiojo universiteto sporto studijos",
      "away": "Kėdainių sporto centras",
      "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
@@ -2610,18 +2610,18 @@
     {
      "date": "2027-02-06",
      "time": "19:00",
-     "home": "Baltic Sharks",
-     "away": "Vilkaviškio „NKA-Perlas GO“",
-     "venue": "LKPB sporto salė Griunvaldo g. 16, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2907024/"
-    },
-    {
-     "date": "2027-02-06",
-     "time": "19:00",
      "home": "Kėdainių sporto centras",
      "away": "Varėnos „KRS“",
      "venue": "Kėdainių sporto centras Parko g. 4, Vilainių sen., Kėdainių raj. sav",
      "url": "https://www.rkl.lt/rungtynes/2907025/"
+    },
+    {
+     "date": "2027-02-06",
+     "time": "19:00",
+     "home": "Baltic Sharks",
+     "away": "Vilkaviškio „NKA-Perlas GO“",
+     "venue": "LKPB sporto salė Griunvaldo g. 16, Kaunas",
+     "url": "https://www.rkl.lt/rungtynes/2907024/"
     },
     {
      "date": "2027-02-06",
@@ -2674,18 +2674,18 @@
     {
      "date": "2027-02-19",
      "time": "19:00",
-     "home": "Vytauto Didžiojo universiteto sporto studijos",
-     "away": "Lazdijų „Briedis-Pietų Megrame“",
-     "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
-     "url": "https://www.rkl.lt/rungtynes/2907033/"
-    },
-    {
-     "date": "2027-02-19",
-     "time": "19:00",
      "home": "Anykščių „KKSC-Elmis“",
      "away": "Baltic Sharks",
      "venue": "Sporto ir laisvalaikio centras „Nykščio namai“ Liudiškių g. 18, Anykščiai",
      "url": "https://www.rkl.lt/rungtynes/2907035/"
+    },
+    {
+     "date": "2027-02-19",
+     "time": "19:00",
+     "home": "Vytauto Didžiojo universiteto sporto studijos",
+     "away": "Lazdijų „Briedis-Pietų Megrame“",
+     "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
+     "url": "https://www.rkl.lt/rungtynes/2907033/"
     },
     {
      "date": "2027-02-19",
@@ -2714,14 +2714,6 @@
     {
      "date": "2027-02-26",
      "time": "19:00",
-     "home": "Kauno raj. „Tornado KM-Tauras“",
-     "away": "Varėnos „KRS“",
-     "venue": "Kauno MPPMC Smalininkų g. 18, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2907042/"
-    },
-    {
-     "date": "2027-02-26",
-     "time": "19:00",
      "home": "Anykščių „KKSC-Elmis“",
      "away": "Kėdainių sporto centras",
      "venue": "Sporto ir laisvalaikio centras „Nykščio namai“ Liudiškių g. 18, Anykščiai",
@@ -2746,10 +2738,34 @@
     {
      "date": "2027-02-26",
      "time": "19:00",
+     "home": "Kauno raj. „Tornado KM-Tauras“",
+     "away": "Varėnos „KRS“",
+     "venue": "Kauno MPPMC Smalininkų g. 18, Kaunas",
+     "url": "https://www.rkl.lt/rungtynes/2907042/"
+    },
+    {
+     "date": "2027-02-26",
+     "time": "19:00",
      "home": "SKM-Vilniaus „Rytas“",
      "away": "Vilkaviškio „NKA-Perlas GO“",
      "venue": "Vilniaus Gabijos Progimnazija Gabijos g. 2C, Vilnius",
      "url": "https://www.rkl.lt/rungtynes/2907046/"
+    },
+    {
+     "date": "2027-03-05",
+     "time": "19:00",
+     "home": "Varėnos „KRS“",
+     "away": "Anykščių „KKSC-Elmis“",
+     "venue": "Varėnos Ąžuolo gimnazija J. Basanavičiaus g. 33, Varėna",
+     "url": "https://www.rkl.lt/rungtynes/2907036/"
+    },
+    {
+     "date": "2027-03-05",
+     "time": "19:00",
+     "home": "Vytauto Didžiojo universiteto sporto studijos",
+     "away": "SKM-Vilniaus „Rytas“",
+     "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
+     "url": "https://www.rkl.lt/rungtynes/2907040/"
     },
     {
      "date": "2027-03-05",
@@ -2770,26 +2786,10 @@
     {
      "date": "2027-03-05",
      "time": "19:00",
-     "home": "Varėnos „KRS“",
-     "away": "Anykščių „KKSC-Elmis“",
-     "venue": "Varėnos Ąžuolo gimnazija J. Basanavičiaus g. 33, Varėna",
-     "url": "https://www.rkl.lt/rungtynes/2907036/"
-    },
-    {
-     "date": "2027-03-05",
-     "time": "19:00",
      "home": "Vilkaviškio „NKA-Perlas GO“",
      "away": "Kauno raj. „Tornado KM-Tauras“",
      "venue": "Vilkaviškio sporto centras Sporto g. 3, Vilkaviškis",
      "url": "https://www.rkl.lt/rungtynes/2907038/"
-    },
-    {
-     "date": "2027-03-05",
-     "time": "19:00",
-     "home": "Vytauto Didžiojo universiteto sporto studijos",
-     "away": "SKM-Vilniaus „Rytas“",
-     "venue": "VDU Valdo Adamkaus sporto centras Studentų g. 9A, Akademija, Kauno raj.",
-     "url": "https://www.rkl.lt/rungtynes/2907040/"
     }
    ],
    "B divizionas, C grupė": [
@@ -2816,14 +2816,6 @@
      "away": "Kauno kolegija",
      "venue": "Pakruojo Atžalyno gimnazija P. Mašioto g. 1, Pakruojis",
      "url": "https://www.rkl.lt/rungtynes/2907081/"
-    },
-    {
-     "date": "2026-11-28",
-     "time": "18:00",
-     "home": "Klaipėdos „VKKM-Neptūnas“",
-     "away": "BC „Radviliškis“",
-     "venue": "Klaipėdos Vlado Knašiaus KM Dubysos g. 10/2 g., Klaipėda",
-     "url": "https://www.rkl.lt/rungtynes/2907078/"
     },
     {
      "date": "2026-12-04",
@@ -2891,6 +2883,14 @@
     },
     {
      "date": "2026-12-18",
+     "time": "17:00",
+     "home": "Palangos SC",
+     "away": "Šiaulių KA „Saulė-ŠSG“",
+     "venue": "Palangos sporto centras Sporto g. 3, Palanga",
+     "url": "https://www.rkl.lt/rungtynes/2907109/"
+    },
+    {
+     "date": "2026-12-18",
      "time": "19:00",
      "home": "Lietuvos sporto universitetas",
      "away": "Kauno kolegija",
@@ -2906,12 +2906,12 @@
      "url": "https://www.rkl.lt/rungtynes/2907107/"
     },
     {
-     "date": "2026-12-18",
-     "time": "19:00",
-     "home": "Palangos SC",
-     "away": "Šiaulių KA „Saulė-ŠSG“",
-     "venue": "Palangos sporto centras Sporto g. 3, Palanga",
-     "url": "https://www.rkl.lt/rungtynes/2907109/"
+     "date": "2026-12-20",
+     "time": "14:00",
+     "home": "Klaipėdos „VKKM-Neptūnas“",
+     "away": "BC „Radviliškis“",
+     "venue": "Klaipėdos Vlado Knašiaus KM Dubysos g. 10/2 g., Klaipėda",
+     "url": "https://www.rkl.lt/rungtynes/2907078/"
     },
     {
      "date": "2026-12-23",
@@ -2932,18 +2932,18 @@
     {
      "date": "2027-01-08",
      "time": "19:00",
-     "home": "Kauno kolegija",
-     "away": "Lietuvos sporto universitetas",
-     "venue": "Kauno kolegijos sporto salė Pramonės g. 22, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2907111/"
-    },
-    {
-     "date": "2027-01-08",
-     "time": "19:00",
      "home": "KK Kelmė",
      "away": "Klaipėdos „VKKM-Neptūnas“",
      "venue": "Kelmės sporto centras Janonio g. 11F-1, Kelmė",
      "url": "https://www.rkl.lt/rungtynes/2907115/"
+    },
+    {
+     "date": "2027-01-08",
+     "time": "19:00",
+     "home": "Kauno kolegija",
+     "away": "Lietuvos sporto universitetas",
+     "venue": "Kauno kolegijos sporto salė Pramonės g. 22, Kaunas",
+     "url": "https://www.rkl.lt/rungtynes/2907111/"
     },
     {
      "date": "2027-01-08",
@@ -3020,14 +3020,6 @@
     {
      "date": "2027-01-29",
      "time": "19:00",
-     "home": "Tauragės „Tauragė-2“",
-     "away": "Palangos SC",
-     "venue": "Bastilijos sporto kompleksas Gaurės g. 27A, Tauragė",
-     "url": "https://www.rkl.lt/rungtynes/2907116/"
-    },
-    {
-     "date": "2027-01-29",
-     "time": "19:00",
      "home": "Lietuvos sporto universitetas",
      "away": "Šiaulių KA „Saulė-ŠSG“",
      "venue": "LSU sporto salė Sporto g. 6, Kaunas",
@@ -3044,6 +3036,14 @@
     {
      "date": "2027-01-29",
      "time": "19:00",
+     "home": "Tauragės „Tauragė-2“",
+     "away": "Palangos SC",
+     "venue": "Bastilijos sporto kompleksas Gaurės g. 27A, Tauragė",
+     "url": "https://www.rkl.lt/rungtynes/2907116/"
+    },
+    {
+     "date": "2027-01-29",
+     "time": "19:00",
      "home": "Kauno kolegija",
      "away": "Pakruojo „SC-Lygumų ŽŪB“",
      "venue": "Kauno kolegijos sporto salė Pramonės g. 22, Kaunas",
@@ -3052,18 +3052,18 @@
     {
      "date": "2027-02-05",
      "time": "19:00",
-     "home": "Šiaulių KA „Saulė-ŠSG“",
-     "away": "BC „Radviliškis“",
-     "venue": "Krepšinio akademija „Saulė“ Pramonės g. 13, Šiauliai",
-     "url": "https://www.rkl.lt/rungtynes/2907121/"
-    },
-    {
-     "date": "2027-02-05",
-     "time": "19:00",
      "home": "Palangos SC",
      "away": "Lietuvos sporto universitetas",
      "venue": "Palangos sporto centras Sporto g. 3, Palanga",
      "url": "https://www.rkl.lt/rungtynes/2907122/"
+    },
+    {
+     "date": "2027-02-05",
+     "time": "19:00",
+     "home": "Šiaulių KA „Saulė-ŠSG“",
+     "away": "BC „Radviliškis“",
+     "venue": "Krepšinio akademija „Saulė“ Pramonės g. 13, Šiauliai",
+     "url": "https://www.rkl.lt/rungtynes/2907121/"
     },
     {
      "date": "2027-02-05",
@@ -3116,18 +3116,18 @@
     {
      "date": "2027-02-19",
      "time": "19:00",
-     "home": "Šiaulių KA „Saulė-ŠSG“",
-     "away": "Pakruojo „SC-Lygumų ŽŪB“",
-     "venue": "Krepšinio akademija „Saulė“ Pramonės g. 13, Šiauliai",
-     "url": "https://www.rkl.lt/rungtynes/2907130/"
-    },
-    {
-     "date": "2027-02-19",
-     "time": "19:00",
      "home": "Palangos SC",
      "away": "Kauno kolegija",
      "venue": "Palangos sporto centras Sporto g. 3, Palanga",
      "url": "https://www.rkl.lt/rungtynes/2907132/"
+    },
+    {
+     "date": "2027-02-19",
+     "time": "19:00",
+     "home": "Šiaulių KA „Saulė-ŠSG“",
+     "away": "Pakruojo „SC-Lygumų ŽŪB“",
+     "venue": "Krepšinio akademija „Saulė“ Pramonės g. 13, Šiauliai",
+     "url": "https://www.rkl.lt/rungtynes/2907130/"
     },
     {
      "date": "2027-02-19",
@@ -3180,18 +3180,18 @@
     {
      "date": "2027-03-05",
      "time": "19:00",
-     "home": "Palangos SC",
-     "away": "Klaipėdos „VKKM-Neptūnas“",
-     "venue": "Palangos sporto centras Sporto g. 3, Palanga",
-     "url": "https://www.rkl.lt/rungtynes/2907133/"
-    },
-    {
-     "date": "2027-03-05",
-     "time": "19:00",
      "home": "Tauragės „Tauragė-2“",
      "away": "Kauno kolegija",
      "venue": "Bastilijos sporto kompleksas Gaurės g. 27A, Tauragė",
      "url": "https://www.rkl.lt/rungtynes/2907137/"
+    },
+    {
+     "date": "2027-03-05",
+     "time": "19:00",
+     "home": "Palangos SC",
+     "away": "Klaipėdos „VKKM-Neptūnas“",
+     "venue": "Palangos sporto centras Sporto g. 3, Palanga",
+     "url": "https://www.rkl.lt/rungtynes/2907133/"
     },
     {
      "date": "2027-03-05",
@@ -3238,14 +3238,6 @@
     {
      "date": "2026-12-04",
      "time": "19:00",
-     "home": "Panevėžio sporto centras",
-     "away": "Skuodo „KKSC-Kuršasta“",
-     "venue": "Durpyno daugiafunkcinė sporto salė Durpyno g. 3A, Panevėžys",
-     "url": "https://www.rkl.lt/rungtynes/2907155/"
-    },
-    {
-     "date": "2026-12-04",
-     "time": "19:00",
      "home": "Šilutės „Šilutė-Banduva“",
      "away": "KA „Žalgiris-Nordclinic“",
      "venue": "Šilutės sporto centras Gluosnių g. 13B, Šilutė",
@@ -3258,6 +3250,14 @@
      "away": "Klaipėdos Universitetas-KKM",
      "venue": "Telšių SRC Birutės g. 60, Telšiai",
      "url": "https://www.rkl.lt/rungtynes/2907159/"
+    },
+    {
+     "date": "2026-12-04",
+     "time": "19:00",
+     "home": "Panevėžio sporto centras",
+     "away": "Skuodo „KKSC-Kuršasta“",
+     "venue": "Durpyno daugiafunkcinė sporto salė Durpyno g. 3A, Panevėžys",
+     "url": "https://www.rkl.lt/rungtynes/2907155/"
     },
     {
      "date": "2026-12-05",
@@ -3398,6 +3398,14 @@
     {
      "date": "2027-01-22",
      "time": "19:00",
+     "home": "Pajūrio „Jūra“",
+     "away": "„Domeikava-Ekotroba“",
+     "venue": "Šilalės sporto ir laisvalaikio centras Kovo 11-osios g. 15, Šilalė",
+     "url": "https://www.rkl.lt/rungtynes/2907199/"
+    },
+    {
+     "date": "2027-01-22",
+     "time": "19:00",
      "home": "Skuodo „KKSC-Kuršasta“",
      "away": "Panevėžio sporto centras",
      "venue": "Skuodo Bartuvos progimnazija Šatrijos g. 1, Skuodas",
@@ -3420,12 +3428,12 @@
      "url": "https://www.rkl.lt/rungtynes/2907196/"
     },
     {
-     "date": "2027-01-22",
+     "date": "2027-01-29",
      "time": "19:00",
-     "home": "Pajūrio „Jūra“",
-     "away": "„Domeikava-Ekotroba“",
-     "venue": "Šilalės sporto ir laisvalaikio centras Kovo 11-osios g. 15, Šilalė",
-     "url": "https://www.rkl.lt/rungtynes/2907199/"
+     "home": "Panevėžio sporto centras",
+     "away": "KA „Žalgiris-Nordclinic“",
+     "venue": "Durpyno daugiafunkcinė sporto salė Durpyno g. 3A, Panevėžys",
+     "url": "https://www.rkl.lt/rungtynes/2907209/"
     },
     {
      "date": "2027-01-29",
@@ -3446,14 +3454,6 @@
     {
      "date": "2027-01-29",
      "time": "19:00",
-     "home": "Panevėžio sporto centras",
-     "away": "KA „Žalgiris-Nordclinic“",
-     "venue": "Durpyno daugiafunkcinė sporto salė Durpyno g. 3A, Panevėžys",
-     "url": "https://www.rkl.lt/rungtynes/2907209/"
-    },
-    {
-     "date": "2027-01-29",
-     "time": "19:00",
      "home": "Kauno technologijos universitetas",
      "away": "Skuodo „KKSC-Kuršasta“",
      "venue": "KTU Chemijos rūmų sporto salė Radvilėnų pl. 19, Kaunas",
@@ -3462,18 +3462,18 @@
     {
      "date": "2027-02-05",
      "time": "19:00",
-     "home": "KA „Žalgiris-Nordclinic“",
-     "away": "Kauno technologijos universitetas",
-     "venue": "Kauno krepšinio akademija „Žalgiris“ Pašilės g. 41, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2907183/"
-    },
-    {
-     "date": "2027-02-05",
-     "time": "19:00",
      "home": "Pajūrio „Jūra“",
      "away": "Šilutės „Šilutė-Banduva“",
      "venue": "Šilalės sporto ir laisvalaikio centras Kovo 11-osios g. 15, Šilalė",
      "url": "https://www.rkl.lt/rungtynes/2907188/"
+    },
+    {
+     "date": "2027-02-05",
+     "time": "19:00",
+     "home": "KA „Žalgiris-Nordclinic“",
+     "away": "Kauno technologijos universitetas",
+     "venue": "Kauno krepšinio akademija „Žalgiris“ Pašilės g. 41, Kaunas",
+     "url": "https://www.rkl.lt/rungtynes/2907183/"
     },
     {
      "date": "2027-02-06",
@@ -3494,18 +3494,18 @@
     {
      "date": "2027-02-12",
      "time": "19:00",
-     "home": "Panevėžio sporto centras",
-     "away": "Pajūrio „Jūra“",
-     "venue": "Durpyno daugiafunkcinė sporto salė Durpyno g. 3A, Panevėžys",
-     "url": "https://www.rkl.lt/rungtynes/2907197/"
-    },
-    {
-     "date": "2027-02-12",
-     "time": "19:00",
      "home": "Kauno technologijos universitetas",
      "away": "Klaipėdos Universitetas-KKM",
      "venue": "KTU Chemijos rūmų sporto salė Radvilėnų pl. 19, Kaunas",
      "url": "https://www.rkl.lt/rungtynes/2907200/"
+    },
+    {
+     "date": "2027-02-12",
+     "time": "19:00",
+     "home": "Panevėžio sporto centras",
+     "away": "Pajūrio „Jūra“",
+     "venue": "Durpyno daugiafunkcinė sporto salė Durpyno g. 3A, Panevėžys",
+     "url": "https://www.rkl.lt/rungtynes/2907197/"
     },
     {
      "date": "2027-02-12",
@@ -3566,6 +3566,14 @@
     {
      "date": "2027-02-26",
      "time": "19:00",
+     "home": "KA „Žalgiris-Nordclinic“",
+     "away": "Klaipėdos Universitetas-KKM",
+     "venue": "Kauno krepšinio akademija „Žalgiris“ Pašilės g. 41, Kaunas",
+     "url": "https://www.rkl.lt/rungtynes/2907198/"
+    },
+    {
+     "date": "2027-02-26",
+     "time": "19:00",
      "home": "Kauno technologijos universitetas",
      "away": "„Domeikava-Ekotroba“",
      "venue": "KTU Chemijos rūmų sporto salė Radvilėnų pl. 19, Kaunas",
@@ -3578,14 +3586,6 @@
      "away": "Pajūrio „Jūra“",
      "venue": "Skuodo Bartuvos progimnazija Šatrijos g. 1, Skuodas",
      "url": "https://www.rkl.lt/rungtynes/2907195/"
-    },
-    {
-     "date": "2027-02-26",
-     "time": "19:00",
-     "home": "KA „Žalgiris-Nordclinic“",
-     "away": "Klaipėdos Universitetas-KKM",
-     "venue": "Kauno krepšinio akademija „Žalgiris“ Pašilės g. 41, Kaunas",
-     "url": "https://www.rkl.lt/rungtynes/2907198/"
     },
     {
      "date": "2027-03-05",
@@ -3624,46 +3624,6 @@
   "MKL": {
    "U19 vaikinai": [],
    "U18 vaikinai": [
-    {
-     "date": "2026-11-24",
-     "time": "17:45",
-     "home": "NKA-Perlas - Coffee loft",
-     "away": "Vilniaus KM II",
-     "venue": "Vilkaviškio sporto centras",
-     "url": "https://mkl.lt/league/603/game/5238785?seasonId=132908"
-    },
-    {
-     "date": "2026-11-24",
-     "time": "18:30",
-     "home": "KA \"Žalgiris\" I",
-     "away": "VKKM I-Neptūnas",
-     "venue": "Kauno KA \"Žalgiris\" (2 salė)",
-     "url": "https://mkl.lt/league/603/game/5238776?seasonId=132908"
-    },
-    {
-     "date": "2026-11-24",
-     "time": "18:40",
-     "home": "Tornado KM I - Metga",
-     "away": "Vilniaus KM I - EM Logistics",
-     "venue": "Kauno MPPMC",
-     "url": "https://mkl.lt/league/603/game/5238781?seasonId=132908"
-    },
-    {
-     "date": "2026-11-24",
-     "time": "19:00",
-     "home": "NKA I - Hegelmann Litauen",
-     "away": "Sostinės KM I - Wienerberger",
-     "venue": "Kauno \"Žaliakalnio\" progimnazja",
-     "url": "https://mkl.lt/league/603/game/5238779?seasonId=132908"
-    },
-    {
-     "date": "2026-11-24",
-     "time": "19:00",
-     "home": "Kauno KA Snaiperis I",
-     "away": "Panevėžio SC-NTA \"21 amžius\"",
-     "venue": "LKPB sporto salė",
-     "url": "https://mkl.lt/league/603/game/5238774?seasonId=132908"
-    },
     {
      "date": "2026-11-29",
      "time": "13:30",
@@ -4355,14 +4315,6 @@
    ],
    "U17 vaikinai": [
     {
-     "date": "2026-11-24",
-     "time": "18:30",
-     "home": "VKKM I-Neptūnas",
-     "away": "KA „Žalgiris“ I - Paradis Liftai",
-     "venue": "V.Knašiaus KM",
-     "url": "https://mkl.lt/league/573/game/5238429?seasonId=132906"
-    },
-    {
      "date": "2026-11-25",
      "time": "16:30",
      "home": "Sostinės KM II - Knauf",
@@ -4403,14 +4355,6 @@
      "url": "https://mkl.lt/league/573/game/5238417?seasonId=132906"
     },
     {
-     "date": "2026-11-30",
-     "time": "18:30",
-     "home": "VKKM I-Neptūnas",
-     "away": "Sostinės KM II - Knauf",
-     "venue": "V.Knašiaus KM",
-     "url": "https://mkl.lt/league/573/game/5238441?seasonId=132906"
-    },
-    {
      "date": "2026-12-01",
      "time": "18:15",
      "home": "Vilniaus KM I - Coral Travel",
@@ -4433,6 +4377,14 @@
      "away": "Šiaulių KA „Saulė“ I - ŠSG",
      "venue": "Vilnius TECH SC",
      "url": "https://mkl.lt/league/573/game/5238431?seasonId=132906"
+    },
+    {
+     "date": "2026-12-02",
+     "time": "16:30",
+     "home": "VKKM I-Neptūnas",
+     "away": "Sostinės KM II - Knauf",
+     "venue": "V.Knašiaus KM",
+     "url": "https://mkl.lt/league/573/game/5238441?seasonId=132906"
     },
     {
      "date": "2026-12-03",
@@ -5093,22 +5045,6 @@
    ],
    "U16 vaikinai": [
     {
-     "date": "2026-11-24",
-     "time": "16:40",
-     "home": "Vilniaus KM I",
-     "away": "VKKM II-Neptūnas",
-     "venue": "Vilniaus KM",
-     "url": "https://mkl.lt/league/613/game/5238106?seasonId=132905"
-    },
-    {
-     "date": "2026-11-24",
-     "time": "17:30",
-     "home": "Šiaulių KA „Saulė“ I - ŠSG",
-     "away": "Ukmergės SC - Jusema",
-     "venue": "KA \"Saulė\" sp.s.",
-     "url": "https://mkl.lt/league/613/game/5238101?seasonId=132905"
-    },
-    {
      "date": "2026-11-25",
      "time": "16:30",
      "home": "VKKM I-Neptūnas",
@@ -5206,7 +5142,7 @@
     },
     {
      "date": "2026-12-10",
-     "time": "11:00",
+     "time": "17:00",
      "home": "Ukmergės SC - Jusema",
      "away": "Panevėžio SC/RSSG",
      "venue": "Ukmergės \"Užupio\" p. m.",
@@ -5928,7 +5864,7 @@
     },
     {
      "date": "2026-12-05",
-     "time": "14:00",
+     "time": "12:00",
      "home": "VKKM I-Neptūnas",
      "away": "Sostinės KM I - M.A.M.A.",
      "venue": "V.Knašiaus KM",
@@ -6640,22 +6576,6 @@
     }
    ],
    "U14 vaikinai": [
-    {
-     "date": "2026-11-24",
-     "time": "16:30",
-     "home": "VKKM I - Neptūnas",
-     "away": "KA „Žalgiris“ I - Nordclinic",
-     "venue": "V.Knašiaus KM",
-     "url": "https://mkl.lt/league/633/game/5237628?seasonId=132902"
-    },
-    {
-     "date": "2026-11-24",
-     "time": "18:00",
-     "home": "Nacionalinė KA I",
-     "away": "Šiaulių KA „Saulė“ I",
-     "venue": "VDU \"Atžalyno\" progimnazija",
-     "url": "https://mkl.lt/league/633/game/5237634?seasonId=132902"
-    },
     {
      "date": "2026-11-26",
      "time": "18:15",
@@ -7411,14 +7331,6 @@
    ],
    "U13 vaikinai": [
     {
-     "date": "2026-11-24",
-     "time": "17:30",
-     "home": "Raseinių KKSC",
-     "away": "Klaipėdos KM I - UAB Autopoliklinika",
-     "venue": "Raseinių KKSC",
-     "url": "https://mkl.lt/league/643/game/5237052?seasonId=132899"
-    },
-    {
      "date": "2026-11-26",
      "time": "16:30",
      "home": "VKKM I-Neptūnas",
@@ -8167,14 +8079,6 @@
     },
     {
      "date": "2026-12-13",
-     "time": "12:00",
-     "home": "KA \"Sūduva\"",
-     "away": "VKKM I-Neptūnas",
-     "venue": "Marijampolės SC (Gamyklų g.)",
-     "url": "https://mkl.lt/league/563/game/5239147?seasonId=132907"
-    },
-    {
-     "date": "2026-12-13",
      "time": "13:00",
      "home": "Vilniaus KM I - Kibirkštis",
      "away": "Panevėžio SC/RSSG I",
@@ -8188,6 +8092,14 @@
      "away": "Šiaulių KA „Saulė“ I ŠSG",
      "venue": "Vilniaus KM, NBA salė (1 salė)",
      "url": "https://mkl.lt/league/563/game/5239141?seasonId=132907"
+    },
+    {
+     "date": "2026-12-20",
+     "time": "13:00",
+     "home": "KA \"Sūduva\"",
+     "away": "VKKM I-Neptūnas",
+     "venue": "Marijampolės SC (Gamyklų g.)",
+     "url": "https://mkl.lt/league/563/game/5239147?seasonId=132907"
     },
     {
      "date": "2027-01-09",
@@ -8312,14 +8224,6 @@
    ],
    "U16 merginos": [
     {
-     "date": "2026-11-24",
-     "time": "18:15",
-     "home": "Vilniaus KM I - Kibirkštis",
-     "away": "Visagino KM - Akvilė",
-     "venue": "Vilniaus KM, NBA salė (1 salė)",
-     "url": "https://mkl.lt/league/593/game/5239002?seasonId=132904"
-    },
-    {
      "date": "2026-11-27",
      "time": "17:00",
      "home": "KA „Žalgiris“ I",
@@ -8346,9 +8250,9 @@
     {
      "date": "2026-12-05",
      "time": "12:00",
-     "home": "VKKM I-Neptūnas",
-     "away": "Vilniaus KM II - Kibirkštis",
-     "venue": "V.Knašiaus KM",
+     "home": "Vilniaus KM II - Kibirkštis",
+     "away": "VKKM I-Neptūnas",
+     "venue": "Vilniaus KM, NBA salė (1 salė)",
      "url": "https://mkl.lt/league/593/game/5239008?seasonId=132904"
     },
     {
@@ -8561,10 +8465,10 @@
     },
     {
      "date": "2027-03-13",
-     "time": "13:00",
-     "home": "Vilniaus KM II - Kibirkštis",
-     "away": "VKKM I-Neptūnas",
-     "venue": "Vilniaus KM, NBA salė (1 salė)",
+     "time": "14:00",
+     "home": "VKKM I-Neptūnas",
+     "away": "Vilniaus KM II - Kibirkštis",
+     "venue": "V.Knašiaus KM",
      "url": "https://mkl.lt/league/593/game/5239029?seasonId=132904"
     },
     {
@@ -8868,12 +8772,12 @@
    ],
    "U13 merginos": [
     {
-     "date": "2026-11-24",
-     "time": "15:30",
-     "home": "KA „Žalgiris“ I",
-     "away": "Sostinės KM - payabl.",
+     "date": "2026-01-23",
+     "time": "11:00",
+     "home": "KA „Žalgiris“ II",
+     "away": "Vilniaus KM I - Kibirkštis",
      "venue": "Kauno KA \"Žalgiris\" (1 salė)",
-     "url": "https://mkl.lt/league/8033/game/5238923?seasonId=132900"
+     "url": "https://mkl.lt/league/8033/game/5238929?seasonId=132900"
     },
     {
      "date": "2026-11-26",
@@ -8884,16 +8788,8 @@
      "url": "https://mkl.lt/league/8033/game/5238903?seasonId=132900"
     },
     {
-     "date": "2026-11-28",
-     "time": "11:00",
-     "home": "KA „Žalgiris“ II",
-     "away": "Vilniaus KM I - Kibirkštis",
-     "venue": "Kauno KA \"Žalgiris\" (1 salė)",
-     "url": "https://mkl.lt/league/8033/game/5238929?seasonId=132900"
-    },
-    {
-     "date": "2026-11-28",
-     "time": "11:30",
+     "date": "2026-11-29",
+     "time": "12:30",
      "home": "Sostinės KM - payabl.",
      "away": "VKKM I-Neptūnas",
      "venue": "Vilniaus Ž.Augusto p.m.",
@@ -8906,14 +8802,6 @@
      "away": "KA „Žalgiris“ I",
      "venue": "Kauno KA \"Žalgiris\"",
      "url": "https://mkl.lt/league/8033/game/5238908?seasonId=132900"
-    },
-    {
-     "date": "2026-12-02",
-     "time": "16:30",
-     "home": "VKKM I-Neptūnas",
-     "away": "Utenos DSC",
-     "venue": "V.Knašiaus KM",
-     "url": "https://mkl.lt/league/8033/game/5238910?seasonId=132900"
     },
     {
      "date": "2026-12-03",
@@ -8930,6 +8818,14 @@
      "away": "Alytaus SC",
      "venue": "Vilniaus Ž.Augusto p.m.",
      "url": "https://mkl.lt/league/8033/game/5238906?seasonId=132900"
+    },
+    {
+     "date": "2026-12-05",
+     "time": "14:00",
+     "home": "VKKM I-Neptūnas",
+     "away": "Utenos DSC",
+     "venue": "V.Knašiaus KM",
+     "url": "https://mkl.lt/league/8033/game/5238910?seasonId=132900"
     },
     {
      "date": "2026-12-06",
